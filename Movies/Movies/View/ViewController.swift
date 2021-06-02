@@ -20,6 +20,12 @@ class ViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        viewModel?.fetchMovies {
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,8 +53,15 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieCell else { return UITableViewCell() }
+        
         guard let viewModel = viewModel else { return UITableViewCell() }
-        // TODO: Создать ячейку
-        return viewModel.cellForRowAt(indexPath)
+        
+        let cellViewModel = viewModel.cellForRowAt(indexPath: indexPath)
+        
+        cell.viewModel = cellViewModel
+        
+        return cell
     }
 }
