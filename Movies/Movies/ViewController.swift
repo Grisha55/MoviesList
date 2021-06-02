@@ -14,6 +14,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NetworkingService().fetchData { (result) in
+            switch result {
+            
+            case .failure(let error):
+                print(error.localizedDescription)
+                
+            case .success(let movies):
+                movies.forEach { movie in
+                    print(movie.originalTitle)
+                }
+            }
+        }
         tableView.delegate = self
         tableView.dataSource = self
     }
