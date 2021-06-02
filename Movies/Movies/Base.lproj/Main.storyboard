@@ -33,11 +33,70 @@
                     <navigationItem key="navigationItem" title="Фильмы" id="kCJ-A3-ESh"/>
                     <connections>
                         <outlet property="tableView" destination="HXM-Aw-7JL" id="NSU-95-B5p"/>
+                        <segue destination="Q1P-YJ-6FG" kind="show" identifier="toDetailVC" id="FDr-jd-LTp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="105.80357142857143"/>
+        </scene>
+        <!--DetailVC-->
+        <scene sceneID="eXl-cW-2dd">
+            <objects>
+                <viewController id="Q1P-YJ-6FG" customClass="DetailVC" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iZ7-8X-NAk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NJL-J3-9Up">
+                                <rect key="frame" x="20" y="88" width="374" height="808"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5j-uW-fjf">
+                                        <rect key="frame" x="166.5" y="0.0" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4bg-PK-id3">
+                                        <rect key="frame" x="67" y="45.5" width="240" height="278"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="278" id="D15-7G-dwu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zxw-dc-idp">
+                                        <rect key="frame" x="0.0" y="348.5" width="374" height="459.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4bg-PK-id3" firstAttribute="leading" secondItem="NJL-J3-9Up" secondAttribute="leading" constant="67" id="UAs-Pd-bfo"/>
+                                    <constraint firstItem="Zxw-dc-idp" firstAttribute="leading" secondItem="NJL-J3-9Up" secondAttribute="leadingMargin" id="gEg-hS-XgI"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7ke-ao-TGC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NJL-J3-9Up" firstAttribute="leading" secondItem="7ke-ao-TGC" secondAttribute="leading" constant="20" id="6l1-w8-Pcu"/>
+                            <constraint firstItem="7ke-ao-TGC" firstAttribute="trailing" secondItem="NJL-J3-9Up" secondAttribute="trailing" constant="20" id="ald-iO-hL6"/>
+                            <constraint firstItem="NJL-J3-9Up" firstAttribute="top" secondItem="7ke-ao-TGC" secondAttribute="top" id="sfd-1d-VF5"/>
+                            <constraint firstItem="7ke-ao-TGC" firstAttribute="bottom" secondItem="NJL-J3-9Up" secondAttribute="bottom" constant="-34" id="txu-rU-Jv9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="OP4-H3-P8c"/>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="Zxw-dc-idp" id="sqW-gt-7M3"/>
+                        <outlet property="nameLabel" destination="z5j-uW-fjf" id="FWi-X0-4PP"/>
+                        <outlet property="photoImageView" destination="4bg-PK-id3" id="Ide-ld-nZU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9o-Vw-Vgd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1913.0434782608697" y="105.80357142857143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Kp-Kr-o0M">
@@ -59,6 +118,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
