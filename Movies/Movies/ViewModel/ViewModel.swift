@@ -33,12 +33,15 @@ class ViewModel: NSObject {
     }
     
     func cellForRowAt(_ indexPath: IndexPath) -> UITableViewCell {
-        
+        // TODO: Вернуть будуще-созданную ячейку
         return UITableViewCell()
     }
     
-    func didSelectRowAt(_ indexPath: IndexPath) {
-        // TODO: Получить следующий контроллер
+    func viewModelForSelectedRow() -> DetailViewModel? {
+        guard let selectedIndexPath = selectedIndexPath else { return nil}
+        guard let movie = movies?[selectedIndexPath.row] else { return nil}
+        // TODO: Найти способ получения imageView из png файла
+        return DetailViewModel(name: movie.title, overview: movie.overview, imageView: UIImageView())
     }
     
     func selectedRowAt(_ indexPath: IndexPath) {
