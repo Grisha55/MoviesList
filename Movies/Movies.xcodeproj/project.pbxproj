@@ -14,6 +14,8 @@
 		BE80A6C72667CAB900BE609D /* Movies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6C52667CAB900BE609D /* Movies.xcdatamodeld */; };
 		BE80A6C92667CABB00BE609D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE80A6C82667CABB00BE609D /* Assets.xcassets */; };
 		BE80A6CC2667CABB00BE609D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE80A6CA2667CABB00BE609D /* LaunchScreen.storyboard */; };
+		BE80A6D52667D30500BE609D /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6D32667D30500BE609D /* Movie+CoreDataClass.swift */; };
+		BE80A6D62667D30500BE609D /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6D42667D30500BE609D /* Movie+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		BE80A6C82667CABB00BE609D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE80A6CB2667CABB00BE609D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE80A6CD2667CABB00BE609D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE80A6D32667D30500BE609D /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BE80A6D42667D30500BE609D /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		BE80A6BB2667CAB900BE609D /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				BE80A6D72667D31300BE609D /* MovieModel */,
 				BE80A6BC2667CAB900BE609D /* AppDelegate.swift */,
 				BE80A6BE2667CAB900BE609D /* SceneDelegate.swift */,
 				BE80A6C02667CAB900BE609D /* ViewController.swift */,
@@ -68,6 +73,15 @@
 				BE80A6C52667CAB900BE609D /* Movies.xcdatamodeld */,
 			);
 			path = Movies;
+			sourceTree = "<group>";
+		};
+		BE80A6D72667D31300BE609D /* MovieModel */ = {
+			isa = PBXGroup;
+			children = (
+				BE80A6D32667D30500BE609D /* Movie+CoreDataClass.swift */,
+				BE80A6D42667D30500BE609D /* Movie+CoreDataProperties.swift */,
+			);
+			path = MovieModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +157,8 @@
 				BE80A6C12667CAB900BE609D /* ViewController.swift in Sources */,
 				BE80A6BD2667CAB900BE609D /* AppDelegate.swift in Sources */,
 				BE80A6C72667CAB900BE609D /* Movies.xcdatamodeld in Sources */,
+				BE80A6D52667D30500BE609D /* Movie+CoreDataClass.swift in Sources */,
+				BE80A6D62667D30500BE609D /* Movie+CoreDataProperties.swift in Sources */,
 				BE80A6BF2667CAB900BE609D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
