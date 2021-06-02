@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkingService {
+class NetworkingService: NSObject {
     
     func fetchData(completion: @escaping(Result<[Results], Error>) -> Void) {
         

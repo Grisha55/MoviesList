@@ -9,10 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var viewModel: ViewModel!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel = ViewModel()
         
         NetworkingService().fetchData { (result) in
             switch result {
@@ -37,10 +41,12 @@ extension ViewController: UITableViewDelegate {}
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        .zero
+        return viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        
+        
+        return viewModel.cellForRowAt(indexPath)
     }
 }
