@@ -15,7 +15,7 @@ class ViewModel: NSObject {
     
     var movies: [Results]?
     
-    func fetchMovies() {
+    func fetchMovies(completion: @escaping() -> Void) {
         networkingService = NetworkingService()
         networkingService.fetchData { [weak self] (result) in
             switch result {
@@ -23,6 +23,7 @@ class ViewModel: NSObject {
                 print(error.localizedDescription)
             case .success(let movies):
                 self?.movies = movies
+                completion()
             }
         }
     }
@@ -32,9 +33,12 @@ class ViewModel: NSObject {
         return movies.count
     }
     
-    func cellForRowAt(_ indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Вернуть будуще-созданную ячейку
-        return UITableViewCell()
+    func cellForRowAt(indexPath: IndexPath) -> MovieCellViewModel? {
+        guard let movies = movies else { return nil }
+        
+        let movie = movies[indexPath.row]
+        
+        return MovieCellViewModel(title: movie.title, overview: movie.overview)
     }
     
     func viewModelForSelectedRow() -> DetailViewModel? {

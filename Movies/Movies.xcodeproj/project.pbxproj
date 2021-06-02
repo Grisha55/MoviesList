@@ -21,6 +21,9 @@
 		BE80A6E02667E87900BE609D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6DF2667E87900BE609D /* ViewModel.swift */; };
 		BE80A6E22667F12F00BE609D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6E12667F12F00BE609D /* DetailVC.swift */; };
 		BE80A6E42667F15E00BE609D /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6E32667F15E00BE609D /* DetailViewModel.swift */; };
+		BE80A6E8266802F700BE609D /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6E6266802F700BE609D /* MovieCell.swift */; };
+		BE80A6E9266802F700BE609D /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE80A6E7266802F700BE609D /* MovieCell.xib */; };
+		BE80A6EB26680BBC00BE609D /* MovieCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		BE80A6DF2667E87900BE609D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		BE80A6E12667F12F00BE609D /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		BE80A6E32667F15E00BE609D /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		BE80A6E6266802F700BE609D /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		BE80A6E7266802F700BE609D /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
+		BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,13 +78,12 @@
 		BE80A6BB2667CAB900BE609D /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				BE80A6E5266802C800BE609D /* View */,
 				BE80A6DE2667E85600BE609D /* ViewModel */,
 				BE80A6D82667D3B800BE609D /* Networking */,
 				BE80A6D72667D31300BE609D /* MovieModel */,
 				BE80A6BC2667CAB900BE609D /* AppDelegate.swift */,
 				BE80A6BE2667CAB900BE609D /* SceneDelegate.swift */,
-				BE80A6C02667CAB900BE609D /* ViewController.swift */,
-				BE80A6E12667F12F00BE609D /* DetailVC.swift */,
 				BE80A6C22667CAB900BE609D /* Main.storyboard */,
 				BE80A6C82667CABB00BE609D /* Assets.xcassets */,
 				BE80A6CA2667CABB00BE609D /* LaunchScreen.storyboard */,
@@ -119,8 +124,20 @@
 			children = (
 				BE80A6DF2667E87900BE609D /* ViewModel.swift */,
 				BE80A6E32667F15E00BE609D /* DetailViewModel.swift */,
+				BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BE80A6E5266802C800BE609D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BE80A6C02667CAB900BE609D /* ViewController.swift */,
+				BE80A6E12667F12F00BE609D /* DetailVC.swift */,
+				BE80A6E6266802F700BE609D /* MovieCell.swift */,
+				BE80A6E7266802F700BE609D /* MovieCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +199,7 @@
 			files = (
 				BE80A6CC2667CABB00BE609D /* LaunchScreen.storyboard in Resources */,
 				BE80A6C92667CABB00BE609D /* Assets.xcassets in Resources */,
+				BE80A6E9266802F700BE609D /* MovieCell.xib in Resources */,
 				BE80A6C42667CAB900BE609D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,8 +213,10 @@
 			files = (
 				BE80A6C12667CAB900BE609D /* ViewController.swift in Sources */,
 				BE80A6E02667E87900BE609D /* ViewModel.swift in Sources */,
+				BE80A6E8266802F700BE609D /* MovieCell.swift in Sources */,
 				BE80A6DD2667D42100BE609D /* NetworkingModel.swift in Sources */,
 				BE80A6BD2667CAB900BE609D /* AppDelegate.swift in Sources */,
+				BE80A6EB26680BBC00BE609D /* MovieCellViewModel.swift in Sources */,
 				BE80A6C72667CAB900BE609D /* Movies.xcdatamodeld in Sources */,
 				BE80A6E22667F12F00BE609D /* DetailVC.swift in Sources */,
 				BE80A6D52667D30500BE609D /* Movie+CoreDataClass.swift in Sources */,
