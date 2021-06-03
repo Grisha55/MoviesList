@@ -19,7 +19,12 @@ class MovieCell: UITableViewCell {
             guard let viewModel = viewModel else { return }
             titleLabel.text = viewModel.title
             overviewLabel.text = viewModel.overview
-            photoImageView = UIImageView(image: UIImage(data: viewModel.photo))
+            
+            guard let url = URL(string: viewModel.photoString) else { return }
+            
+            guard let data = try? Data(contentsOf: url) else { return }
+            
+            photoImageView = UIImageView(image: UIImage(data: data))
         }
     }
     
