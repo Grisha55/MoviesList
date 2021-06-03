@@ -51,4 +51,8 @@ class ViewModel: NSObject {
     func selectedRowAt(_ indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
     }
+    
+    func registerCell(tableView: UITableView) {
+        tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "movieCell")
+    }
 }
