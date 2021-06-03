@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ps6-ZZ-Rho">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zHL-cX-d2J">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HXM-Aw-7JL">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="105.80357142857143"/>
+            <point key="canvasLocation" x="945" y="106"/>
         </scene>
         <!--Description-->
         <scene sceneID="eXl-cW-2dd">
@@ -49,7 +49,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NJL-J3-9Up">
-                                <rect key="frame" x="20" y="88" width="374" height="808"/>
+                                <rect key="frame" x="20" y="88" width="374" height="759"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5j-uW-fjf">
                                         <rect key="frame" x="146" y="0.0" width="82.5" height="42"/>
@@ -64,7 +64,7 @@
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zxw-dc-idp">
-                                        <rect key="frame" x="0.0" y="370" width="374" height="438"/>
+                                        <rect key="frame" x="0.0" y="370" width="374" height="389"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor"/>
@@ -88,7 +88,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Description" id="OP4-H3-P8c">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="y9V-vr-d02"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="y9V-vr-d02">
+                            <connections>
+                                <action selector="buttonSaveAction:" destination="Q1P-YJ-6FG" id="d9o-pE-Qqw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextView" destination="Zxw-dc-idp" id="sqW-gt-7M3"/>
@@ -98,12 +102,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9o-Vw-Vgd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1913.0434782608697" y="105.80357142857143"/>
+            <point key="canvasLocation" x="1717" y="106"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Favorites-->
+        <scene sceneID="ykp-BI-gou">
+            <objects>
+                <viewController id="KLK-PK-tB4" customClass="FavoriteVC" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TSt-Wg-Pjl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sHU-Et-fWC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DoD-ea-pE7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DoD-ea-pE7" firstAttribute="bottom" secondItem="sHU-Et-fWC" secondAttribute="bottom" id="IEy-jf-Bcw"/>
+                            <constraint firstItem="sHU-Et-fWC" firstAttribute="top" secondItem="DoD-ea-pE7" secondAttribute="top" id="OfD-aD-2TT"/>
+                            <constraint firstItem="DoD-ea-pE7" firstAttribute="trailing" secondItem="sHU-Et-fWC" secondAttribute="trailing" id="s2j-DK-Ml7"/>
+                            <constraint firstItem="sHU-Et-fWC" firstAttribute="leading" secondItem="DoD-ea-pE7" secondAttribute="leading" id="uza-gz-vb1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorites" id="BzC-LM-Tvf"/>
+                    <connections>
+                        <outlet property="tableView" destination="sHU-Et-fWC" id="5aw-jz-Elo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VKd-B7-g62" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946" y="761"/>
+        </scene>
+        <!--Films-->
         <scene sceneID="2Kp-Kr-o0M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ps6-ZZ-Rho" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Films" image="film.fill" catalog="system" id="inm-84-Kl9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zeR-LK-POe">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -118,8 +154,47 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="105.80357142857143"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="qYK-DQ-HGQ">
+            <objects>
+                <tabBarController id="zHL-cX-d2J" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uAZ-rF-Hfs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Ps6-ZZ-Rho" kind="relationship" relationship="viewControllers" id="HQn-al-uu2"/>
+                        <segue destination="q1I-D3-lzQ" kind="relationship" relationship="viewControllers" id="sry-eu-dSl"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9r-PD-fPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-793" y="425"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="nFf-3t-zEL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q1I-D3-lzQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="sparkles" catalog="system" id="YB3-d7-Aq4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MT5-sf-2pi">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KLK-PK-tB4" kind="relationship" relationship="rootViewController" id="ezY-5F-3Nn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kov-dL-zUj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="762"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="film.fill" catalog="system" width="128" height="93"/>
+        <image name="sparkles" catalog="system" width="112" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
