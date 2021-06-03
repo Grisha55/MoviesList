@@ -11,7 +11,7 @@ class DetailVC: UIViewController {
 
     //MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet var photoImageView: UIImageView!
+    @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     var detailViewModel: DetailViewModel?
@@ -28,7 +28,7 @@ class DetailVC: UIViewController {
         guard let detailViewModel = detailViewModel else { return }
         
         nameLabel.text = detailViewModel.name
-        //photoImageView = UIImageView(image: UIImage(data: detailViewModel.imageData))
+        photoImageView = detailViewModel.photoImageView
         descriptionTextView.text = detailViewModel.overview
     }
     

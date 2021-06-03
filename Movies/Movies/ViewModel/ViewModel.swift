@@ -16,22 +16,6 @@ class ViewModel: NSObject {
     
     var movies: [Results]?
     
-    var photo: Photo?
-    
-    //MARK: - Get photos
-    func fetchPhotos(id: Int, completion: @escaping() -> Void) {
-        networkingService = NetworkingService()
-        networkingService.getPhotos(id: id) { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let photo):
-                self?.photo = photo
-                print(photo)
-            }
-        }
-    }
-    
     //MARK: - Get movies
     func fetchMovies(completion: @escaping() -> Void) {
         networkingService = NetworkingService()
@@ -57,16 +41,19 @@ class ViewModel: NSObject {
         
         let movie = movies[indexPath.row]
         
-        //let photoPath = photo?.backdrops?[indexPath.row].filePath
+        let photoPath = movies[indexPath.row].posterPath
         
-        return MovieCellViewModel(title: movie.title, overview: movie.overview, photoData: Data())
+        return MovieCellViewModel(title: movie.title, overview: movie.overview, photoString: "https://image.tmdb.org/t/p/w300" + photoPath)
     }
     
     //MARK: - for TableViewDelegate
     func viewModelForSelectedRow() -> DetailViewModel? {
         guard let selectedIndexPath = selectedIndexPath else { return nil}
         guard let movie = movies?[selectedIndexPath.row] else { return nil}
-        return DetailViewModel(name: movie.originalTitle, overview: movie.overview, photo: UIImageView())
+        
+        guard let url = URL(string: "https://image.tmdb.org/t/p/w300" + movie.posterPath) else { return nil }
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        return DetailViewModel(name: movie.originalTitle, overview: movie.overview, photo: UIImageView(image: UIImage(data: data)))
     }
     
     func selectedRowAt(_ indexPath: IndexPath) {

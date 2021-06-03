@@ -12,7 +12,7 @@ class MovieCellViewModel {
     //MARK: - Properties
     private var titleString: String
     private var overviewString: String
-    private var photoData: Data
+    private var photoData: String
     
     var title: String {
         return titleString
@@ -22,13 +22,13 @@ class MovieCellViewModel {
         return overviewString
     }
     
-    var photo: Data {
+    var photoString: String {
         return photoData
     }
     
-    init(title: String, overview: String, photoData: Data) {
+    init(title: String, overview: String, photoString: String) {
         self.titleString = title
         self.overviewString = overview
-        self.photoData = photoData
+        self.photoData = photoString
     }
 }

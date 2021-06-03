@@ -61,7 +61,7 @@ extension FilmsVC: UITableViewDelegate {
 extension FilmsVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let viewModel = viewModel else { return 0}
+        guard let viewModel = viewModel else { return 0 }
         return viewModel.numberOfRows()
     }
     
