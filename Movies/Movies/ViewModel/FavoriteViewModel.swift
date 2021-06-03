@@ -9,12 +9,11 @@ import UIKit
 
 class FavoriteViewModel {
     
-    private var movies: [Movie]?
+    //MARK: - Constants
+    let identifier = "favoriteCell"
     
-    func numberOfRows() -> Int {
-        guard let movies = movies else { return 0 }
-        return movies.count
-    }
+    //MARK: - Properties
+    private var movies: [Movie]?
     
     //MARK: - Get data from coreData
     func fetchData() {
@@ -22,13 +21,31 @@ class FavoriteViewModel {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             movies = try context.fetch(Movie.fetchRequest())
-            print(movies)
+            print(movies as Any)
         } catch {
             print(error.localizedDescription)
         }
     }
+    
+    //MARK: - RegisterCell
+    func registerCell(tableView: UITableView) {
+        tableView.register(UINib(nibName: "FavoriteCell", bundle: nil), forCellReuseIdentifier: identifier)
+    }
+    
     //MARK: - UITableViewDataSource
-    func cellForRowAt(tableView: UITableView) -> UITableViewCell? {
-        return UITableViewCell()
+    func cellForRowAt(_ indexPath: IndexPath) -> FavoriteCellViewModel? {
+        
+        guard let movies = movies else { return nil }
+        return FavoriteCellViewModel(photoImageView: UIImageView(), nameLabel: movies[indexPath.row].name ?? "N/A")
+    }
+    
+    func numberOfRows() -> Int {
+        guard let movies = movies else { return 0 }
+        return movies.count
+    }
+    
+    //MARK: - UITableViewDelegate
+    func heightForRowAt() -> CGFloat {
+        return 150.0
     }
 }

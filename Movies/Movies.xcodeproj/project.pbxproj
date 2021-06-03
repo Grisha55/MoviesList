@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		BE21068A2668B6D100A9B1A5 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2106882668B6D100A9B1A5 /* Movie+CoreDataClass.swift */; };
 		BE21068B2668B6D100A9B1A5 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2106892668B6D100A9B1A5 /* Movie+CoreDataProperties.swift */; };
+		BE2106902669536900A9B1A5 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21068E2669536900A9B1A5 /* FavoriteCell.swift */; };
+		BE2106912669536900A9B1A5 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE21068F2669536900A9B1A5 /* FavoriteCell.xib */; };
+		BE210693266953D900A9B1A5 /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE210692266953D900A9B1A5 /* FavoriteCellViewModel.swift */; };
 		BE80A6BD2667CAB900BE609D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6BC2667CAB900BE609D /* AppDelegate.swift */; };
 		BE80A6BF2667CAB900BE609D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6BE2667CAB900BE609D /* SceneDelegate.swift */; };
 		BE80A6C12667CAB900BE609D /* FilmsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6C02667CAB900BE609D /* FilmsVC.swift */; };
@@ -31,6 +34,9 @@
 /* Begin PBXFileReference section */
 		BE2106882668B6D100A9B1A5 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BE2106892668B6D100A9B1A5 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BE21068E2669536900A9B1A5 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		BE21068F2669536900A9B1A5 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
+		BE210692266953D900A9B1A5 /* FavoriteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellViewModel.swift; sourceTree = "<group>"; };
 		BE80A6B92667CAB900BE609D /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE80A6BC2667CAB900BE609D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE80A6BE2667CAB900BE609D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 				BE80A6E32667F15E00BE609D /* DetailViewModel.swift */,
 				BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */,
 				BEC4681026689B9F001E9C6A /* FavoriteViewModel.swift */,
+				BE210692266953D900A9B1A5 /* FavoriteCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -142,6 +149,8 @@
 				BE80A6E6266802F700BE609D /* MovieCell.swift */,
 				BE80A6E7266802F700BE609D /* MovieCell.xib */,
 				BEC4680E26689B14001E9C6A /* FavoriteVC.swift */,
+				BE21068E2669536900A9B1A5 /* FavoriteCell.swift */,
+				BE21068F2669536900A9B1A5 /* FavoriteCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +216,7 @@
 				BE80A6C92667CABB00BE609D /* Assets.xcassets in Resources */,
 				BE80A6E9266802F700BE609D /* MovieCell.xib in Resources */,
 				BE80A6C42667CAB900BE609D /* Main.storyboard in Resources */,
+				BE2106912669536900A9B1A5 /* FavoriteCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +233,7 @@
 				BE80A6E02667E87900BE609D /* ViewModel.swift in Sources */,
 				BE80A6E8266802F700BE609D /* MovieCell.swift in Sources */,
 				BEC4681126689B9F001E9C6A /* FavoriteViewModel.swift in Sources */,
+				BE210693266953D900A9B1A5 /* FavoriteCellViewModel.swift in Sources */,
 				BE80A6DD2667D42100BE609D /* NetworkingModel.swift in Sources */,
 				BE80A6BD2667CAB900BE609D /* AppDelegate.swift in Sources */,
 				BE80A6EB26680BBC00BE609D /* MovieCellViewModel.swift in Sources */,
@@ -230,6 +241,7 @@
 				BE80A6E22667F12F00BE609D /* DetailVC.swift in Sources */,
 				BE80A6DA2667D3DE00BE609D /* NetworkingService.swift in Sources */,
 				BE80A6E42667F15E00BE609D /* DetailViewModel.swift in Sources */,
+				BE2106902669536900A9B1A5 /* FavoriteCell.swift in Sources */,
 				BEC4680F26689B14001E9C6A /* FavoriteVC.swift in Sources */,
 				BE80A6BF2667CAB900BE609D /* SceneDelegate.swift in Sources */,
 			);
