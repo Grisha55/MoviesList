@@ -9,6 +9,7 @@ import UIKit
  
 class ViewModel: NSObject {
     
+    //MARK: - Properties
     private var networkingService: NetworkingService!
     
     var selectedIndexPath: IndexPath?
@@ -17,6 +18,7 @@ class ViewModel: NSObject {
     
     var photo: Photo?
     
+    //MARK: - Get photos
     func fetchPhotos(id: Int, completion: @escaping() -> Void) {
         networkingService = NetworkingService()
         networkingService.getPhotos(id: id) { [weak self] (result) in
@@ -30,6 +32,7 @@ class ViewModel: NSObject {
         }
     }
     
+    //MARK: - Get movies
     func fetchMovies(completion: @escaping() -> Void) {
         networkingService = NetworkingService()
         networkingService.fetchData { [weak self] (result) in
@@ -43,6 +46,7 @@ class ViewModel: NSObject {
         }
     }
     
+    //MARK: - for TableViewDataSource
     func numberOfRows() -> Int {
         guard let movies = movies else { return 0}
         return movies.count
@@ -53,16 +57,17 @@ class ViewModel: NSObject {
         
         let movie = movies[indexPath.row]
         
-       // let photo = photo?.backdrops?[indexPath.row]
+        //let photoPath = photo?.backdrops?[indexPath.row].filePath
         
         return MovieCellViewModel(title: movie.title, overview: movie.overview, photoData: Data())
     }
     
-    /*func viewModelForSelectedRow() -> DetailViewModel? {
+    //MARK: - for TableViewDelegate
+    func viewModelForSelectedRow() -> DetailViewModel? {
         guard let selectedIndexPath = selectedIndexPath else { return nil}
         guard let movie = movies?[selectedIndexPath.row] else { return nil}
-        return DetailViewModel(name: movie.title, overview: movie.overview, data: Data(movie.posterPath.utf8))
-    }*/
+        return DetailViewModel(name: movie.originalTitle, overview: movie.overview, photo: UIImageView())
+    }
     
     func selectedRowAt(_ indexPath: IndexPath) {
         self.selectedIndexPath = indexPath

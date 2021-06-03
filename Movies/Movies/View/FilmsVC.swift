@@ -7,14 +7,24 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FilmsVC: UIViewController {
 
-    var viewModel: ViewModel?
+    private var viewModel: ViewModel?
+    
+    //MARK: - Constants
+    let toDetailVC = "toDetailVC"
+    let identifier = "movieCell"
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        settingsTableView()
+    }
+    
+    //MARK: - settingsTableView()
+    private func settingsTableView() {
         
         viewModel = ViewModel()
         
@@ -29,24 +39,26 @@ class ViewController: UIViewController {
         }
     }
     
+    //MARK: - Transition
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "toDetailVC", let viewModel = viewModel else { return }
+        guard segue.identifier == toDetailVC, let viewModel = viewModel else { return }
         guard let detailVC = segue.destination as? DetailVC else { return }
-        //detailVC.detailViewModel = viewModel.viewModelForSelectedRow()
+        detailVC.detailViewModel = viewModel.viewModelForSelectedRow()
     }
 
 }
 
-extension ViewController: UITableViewDelegate {
+//MARK: - UITableViewDelegate
+extension FilmsVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let viewModel = viewModel else { return }
         viewModel.selectedRowAt(indexPath)
-        performSegue(withIdentifier: "toDetailVC", sender: nil)
+        performSegue(withIdentifier: toDetailVC, sender: nil)
     }
 }
-
-extension ViewController: UITableViewDataSource {
+//MARK: - UITableViewDataSource
+extension FilmsVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let viewModel = viewModel else { return 0}
@@ -55,7 +67,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? MovieCell else { return UITableViewCell() }
         
         guard let viewModel = viewModel else { return UITableViewCell() }
         
