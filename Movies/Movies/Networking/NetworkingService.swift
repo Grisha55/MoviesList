@@ -9,48 +9,6 @@ import Foundation
 
 class NetworkingService: NSObject {
     
-    //MARK: - Get photos
-    func getPhotos(id: Int, completion: @escaping(Result<Photo, Error>) -> Void) {
-        
-        let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration)
-        var constructor = URLComponents()
-        constructor.scheme = "https"
-        constructor.host = "api.themoviedb.org"
-        constructor.path = "/3/movie/\(id)/images"
-        constructor.queryItems = [
-            URLQueryItem(name: "api_key", value: "6fc493937e1259d088b4ba87dc174e57")
-        ]
-        
-        guard let url = constructor.url else { return }
-        let request = URLRequest(url: url)
-        
-        let task = session.dataTask(with: request) { data, response, error in
-            if error != nil {
-                completion(.failure(error!))
-            }
-            
-            guard let data = data else {
-                completion(.failure(error!))
-                return
-                
-            }
-            
-            do {
-                let photos = try JSONDecoder().decode(Photo.self, from: data)
-                
-                DispatchQueue.main.async {
-                    completion(.success(photos))
-                }
-                
-            } catch {
-                completion(.failure(error))
-            }
-        }
-        task.resume()
-        
-    }
-    
     //MARK: - Get movies
     func fetchData(completion: @escaping(Result<[Results], Error>) -> Void) {
         

@@ -9,6 +9,8 @@ import UIKit
 
 class MovieCell: UITableViewCell {
 
+    let urlForImage = "https://image.tmdb.org/t/p/w300"
+    
     //MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
@@ -20,11 +22,11 @@ class MovieCell: UITableViewCell {
             titleLabel.text = viewModel.title
             overviewLabel.text = viewModel.overview
             
-            guard let url = URL(string: viewModel.photoString) else { return }
+            guard let url = URL(string: urlForImage + viewModel.photoString) else { return }
             
             guard let data = try? Data(contentsOf: url) else { return }
             
-            photoImageView = UIImageView(image: UIImage(data: data))
+            photoImageView.image = UIImage(data: data)
         }
     }
     

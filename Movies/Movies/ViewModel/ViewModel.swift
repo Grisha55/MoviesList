@@ -9,6 +9,10 @@ import UIKit
  
 class ViewModel: NSObject {
     
+    //MARK: - Constants
+    let urlForImage = "https://image.tmdb.org/t/p/w300"
+    let identifier = "movieCell"
+    
     //MARK: - Properties
     private var networkingService: NetworkingService!
     
@@ -32,7 +36,7 @@ class ViewModel: NSObject {
     
     //MARK: - for TableViewDataSource
     func numberOfRows() -> Int {
-        guard let movies = movies else { return 0}
+        guard let movies = movies else { return 0 }
         return movies.count
     }
     
@@ -41,17 +45,17 @@ class ViewModel: NSObject {
         
         let movie = movies[indexPath.row]
         
-        let photoPath = movies[indexPath.row].posterPath
+        let photoPath = movie.posterPath
         
-        return MovieCellViewModel(title: movie.title, overview: movie.overview, photoString: "https://image.tmdb.org/t/p/w300" + photoPath)
+        return MovieCellViewModel(title: movie.title, overview: movie.overview, photoString: urlForImage + photoPath)
     }
     
     //MARK: - for TableViewDelegate
     func viewModelForSelectedRow() -> DetailViewModel? {
-        guard let selectedIndexPath = selectedIndexPath else { return nil}
-        guard let movie = movies?[selectedIndexPath.row] else { return nil}
+        guard let selectedIndexPath = selectedIndexPath else { return nil }
+        guard let movie = movies?[selectedIndexPath.row] else { return nil }
         
-        guard let url = URL(string: "https://image.tmdb.org/t/p/w300" + movie.posterPath) else { return nil }
+        guard let url = URL(string: urlForImage + movie.posterPath) else { return nil }
         guard let data = try? Data(contentsOf: url) else { return nil }
         return DetailViewModel(name: movie.originalTitle, overview: movie.overview, photo: UIImageView(image: UIImage(data: data)))
     }
@@ -61,6 +65,6 @@ class ViewModel: NSObject {
     }
     
     func registerCell(tableView: UITableView) {
-        tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "movieCell")
+        tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: identifier)
     }
 }
