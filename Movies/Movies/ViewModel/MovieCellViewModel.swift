@@ -5,12 +5,13 @@
 //  Created by Григорий Виняр on 02.06.2021.
 //
 
-import Foundation
+import UIKit
 
 class MovieCellViewModel {
     
     private var titleString: String
     private var overviewString: String
+    private var photoData: Data
     
     var title: String {
         return titleString
@@ -20,8 +21,13 @@ class MovieCellViewModel {
         return overviewString
     }
     
-    init(title: String, overview: String) {
+    var photo: Data {
+        return photoData
+    }
+    
+    init(title: String, overview: String, photoData: Data) {
         self.titleString = title
         self.overviewString = overview
+        self.photoData = photoData
     }
 }

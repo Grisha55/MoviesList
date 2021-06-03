@@ -21,13 +21,27 @@ class DetailViewModel {
         return overviewText
     }
     
-    var imagePhoto: UIImageView {
+    var photoImageView: UIImageView {
         return imageViewImage
     }
     
-    init(name: String, overview: String, imageView: UIImageView) {
+    // TODO: Создать метод по получению фотографии
+    func getPhoto() {
+        
+    }
+    
+    init(name: String, overview: String, photo: UIImageView) {
         self.nameString = name
         self.overviewText = overview
-        self.imageViewImage = imageView
+        self.imageViewImage = photo
+    }
+    
+    func saveData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        let movie = Movie(context: context)
+        movie.name = name
+        movie.overview = overview
+        //movie.photo = photoImageView
     }
 }

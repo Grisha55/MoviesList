@@ -11,14 +11,14 @@ class MovieCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet var photoImageView: UIImageView!
     
     weak var viewModel: MovieCellViewModel? {
         willSet(viewModel) {
             guard let viewModel = viewModel else { return }
-            // TODO: Исправить ошибку с titleLabel
             titleLabel.text = viewModel.title
             overviewLabel.text = viewModel.overview
+            photoImageView = UIImageView(image: UIImage(data: viewModel.photo))
         }
     }
     
