@@ -9,14 +9,21 @@ import UIKit
 
 class DetailVC: UIViewController {
 
+    //MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet  var photoImageView: UIImageView!
+    @IBOutlet var photoImageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     var detailViewModel: DetailViewModel?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupProperties()
+    }
+    
+    //MARK: - Setup properties
+    func setupProperties() {
         
         guard let detailViewModel = detailViewModel else { return }
         

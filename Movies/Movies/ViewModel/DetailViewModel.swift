@@ -9,6 +9,7 @@ import UIKit
 
 class DetailViewModel {
     
+    //MARK: - Properties
     private var nameString: String
     private var overviewText: String
     private var imageViewImage: UIImageView
@@ -36,6 +37,7 @@ class DetailViewModel {
         self.imageViewImage = photo
     }
     
+    //MARK: - Save data into coreData
     func saveData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext

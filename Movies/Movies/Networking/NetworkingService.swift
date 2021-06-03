@@ -9,6 +9,7 @@ import Foundation
 
 class NetworkingService: NSObject {
     
+    //MARK: - Get photos
     func getPhotos(id: Int, completion: @escaping(Result<Photo, Error>) -> Void) {
         
         let configuration = URLSessionConfiguration.default
@@ -50,6 +51,7 @@ class NetworkingService: NSObject {
         
     }
     
+    //MARK: - Get movies
     func fetchData(completion: @escaping(Result<[Results], Error>) -> Void) {
         
         // https://api.themoviedb.org/3/movie/550?api_key=6fc493937e1259d088b4ba87dc174e57

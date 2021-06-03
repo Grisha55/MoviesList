@@ -9,6 +9,7 @@ import UIKit
 
 class MovieCellViewModel {
     
+    //MARK: - Properties
     private var titleString: String
     private var overviewString: String
     private var photoData: Data
