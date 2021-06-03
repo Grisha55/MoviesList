@@ -33,7 +33,8 @@ class DetailVC: UIViewController {
     }
     
     @IBAction func buttonSaveAction(_ sender: Any) {
-        
+        guard let detailViewModel = detailViewModel else { return }
+        detailViewModel.saveData()
     }
     
 }

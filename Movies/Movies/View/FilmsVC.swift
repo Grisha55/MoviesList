@@ -51,6 +51,11 @@ class FilmsVC: UIViewController {
 //MARK: - UITableViewDelegate
 extension FilmsVC: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let viewModel = viewModel else { return 0 }
+        return viewModel.heightForRowAt()
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let viewModel = viewModel else { return }
         viewModel.selectedRowAt(indexPath)

@@ -51,6 +51,10 @@ class ViewModel: NSObject {
     }
     
     //MARK: - for TableViewDelegate
+    func heightForRowAt() -> CGFloat {
+        return 150.0
+    }
+    
     func viewModelForSelectedRow() -> DetailViewModel? {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
         guard let movie = movies?[selectedIndexPath.row] else { return nil }

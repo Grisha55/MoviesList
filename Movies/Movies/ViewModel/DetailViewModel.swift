@@ -26,11 +26,6 @@ class DetailViewModel {
         return imageViewImage
     }
     
-    // TODO: Создать метод по получению фотографии
-    func getPhoto() {
-        
-    }
-    
     init(name: String, overview: String, photo: UIImageView) {
         self.nameString = name
         self.overviewText = overview
@@ -44,6 +39,12 @@ class DetailViewModel {
         let movie = Movie(context: context)
         movie.name = name
         movie.overview = overview
-        //movie.photo = photoImageView
+        movie.photo = photoImageView.image?.jpegData(compressionQuality: 1.0)
+        do {
+            try context.save()
+            print("Успешное сохранение")
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
