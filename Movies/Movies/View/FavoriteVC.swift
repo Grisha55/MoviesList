@@ -13,6 +13,13 @@ class FavoriteVC: UIViewController {
     
     var favoriteViewModel: FavoriteViewModel?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        favoriteViewModel = FavoriteViewModel()
+        favoriteViewModel?.fetchData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
