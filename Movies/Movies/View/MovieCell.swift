@@ -11,6 +11,7 @@ class MovieCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
     
     weak var viewModel: MovieCellViewModel? {
         willSet(viewModel) {

@@ -65,6 +65,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="overviewLabel" destination="CNm-qd-CbA" id="c4g-wz-Hdx"/>
+                <outlet property="photoImageView" destination="uIW-qu-y6c" id="ZCh-hL-wva"/>
                 <outlet property="titleLabel" destination="FJI-KS-4Tt" id="A2n-FW-ToS"/>
             </connections>
             <point key="canvasLocation" x="245.6521739130435" y="162.72321428571428"/>
