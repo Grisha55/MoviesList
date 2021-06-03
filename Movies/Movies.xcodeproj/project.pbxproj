@@ -24,6 +24,8 @@
 		BE80A6E8266802F700BE609D /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6E6266802F700BE609D /* MovieCell.swift */; };
 		BE80A6E9266802F700BE609D /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE80A6E7266802F700BE609D /* MovieCell.xib */; };
 		BE80A6EB26680BBC00BE609D /* MovieCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */; };
+		BEC4680F26689B14001E9C6A /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4680E26689B14001E9C6A /* FavoriteVC.swift */; };
+		BEC4681126689B9F001E9C6A /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4681026689B9F001E9C6A /* FavoriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		BE80A6E6266802F700BE609D /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		BE80A6E7266802F700BE609D /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellViewModel.swift; sourceTree = "<group>"; };
+		BEC4680E26689B14001E9C6A /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
+		BEC4681026689B9F001E9C6A /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 				BE80A6DF2667E87900BE609D /* ViewModel.swift */,
 				BE80A6E32667F15E00BE609D /* DetailViewModel.swift */,
 				BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */,
+				BEC4681026689B9F001E9C6A /* FavoriteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				BE80A6E12667F12F00BE609D /* DetailVC.swift */,
 				BE80A6E6266802F700BE609D /* MovieCell.swift */,
 				BE80A6E7266802F700BE609D /* MovieCell.xib */,
+				BEC4680E26689B14001E9C6A /* FavoriteVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -214,6 +220,7 @@
 				BE80A6C12667CAB900BE609D /* ViewController.swift in Sources */,
 				BE80A6E02667E87900BE609D /* ViewModel.swift in Sources */,
 				BE80A6E8266802F700BE609D /* MovieCell.swift in Sources */,
+				BEC4681126689B9F001E9C6A /* FavoriteViewModel.swift in Sources */,
 				BE80A6DD2667D42100BE609D /* NetworkingModel.swift in Sources */,
 				BE80A6BD2667CAB900BE609D /* AppDelegate.swift in Sources */,
 				BE80A6EB26680BBC00BE609D /* MovieCellViewModel.swift in Sources */,
@@ -223,6 +230,7 @@
 				BE80A6D62667D30500BE609D /* Movie+CoreDataProperties.swift in Sources */,
 				BE80A6DA2667D3DE00BE609D /* NetworkingService.swift in Sources */,
 				BE80A6E42667F15E00BE609D /* DetailViewModel.swift in Sources */,
+				BEC4680F26689B14001E9C6A /* FavoriteVC.swift in Sources */,
 				BE80A6BF2667CAB900BE609D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
