@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        viewModel?.registerCell(tableView: tableView)
         
         viewModel?.fetchMovies {
             DispatchQueue.main.async { [weak self] in
