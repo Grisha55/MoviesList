@@ -28,7 +28,7 @@ class DetailVC: UIViewController {
         guard let detailViewModel = detailViewModel else { return }
         
         nameLabel.text = detailViewModel.name
-        photoImageView = detailViewModel.photoImageView
+        photoImageView.image = detailViewModel.photoImageView.image
         descriptionTextView.text = detailViewModel.overview
     }
     
