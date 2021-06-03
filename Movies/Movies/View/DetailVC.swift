@@ -10,7 +10,7 @@ import UIKit
 class DetailVC: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet  var photoImageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     var detailViewModel: DetailViewModel?
@@ -21,7 +21,7 @@ class DetailVC: UIViewController {
         guard let detailViewModel = detailViewModel else { return }
         
         nameLabel.text = detailViewModel.name
-        photoImageView = detailViewModel.imagePhoto
+        //photoImageView = UIImageView(image: UIImage(data: detailViewModel.imageData))
         descriptionTextView.text = detailViewModel.overview
     }
     

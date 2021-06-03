@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "toDetailVC", let viewModel = viewModel else { return }
         guard let detailVC = segue.destination as? DetailVC else { return }
-        detailVC.detailViewModel = viewModel.viewModelForSelectedRow()
+        //detailVC.detailViewModel = viewModel.viewModelForSelectedRow()
     }
 
 }

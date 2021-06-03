@@ -15,6 +15,21 @@ class ViewModel: NSObject {
     
     var movies: [Results]?
     
+    var photo: Photo?
+    
+    func fetchPhotos(id: Int, completion: @escaping() -> Void) {
+        networkingService = NetworkingService()
+        networkingService.getPhotos(id: id) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let photo):
+                self?.photo = photo
+                print(photo)
+            }
+        }
+    }
+    
     func fetchMovies(completion: @escaping() -> Void) {
         networkingService = NetworkingService()
         networkingService.fetchData { [weak self] (result) in
@@ -38,15 +53,16 @@ class ViewModel: NSObject {
         
         let movie = movies[indexPath.row]
         
-        return MovieCellViewModel(title: movie.title, overview: movie.overview)
+       // let photo = photo?.backdrops?[indexPath.row]
+        
+        return MovieCellViewModel(title: movie.title, overview: movie.overview, photoData: Data())
     }
     
-    func viewModelForSelectedRow() -> DetailViewModel? {
+    /*func viewModelForSelectedRow() -> DetailViewModel? {
         guard let selectedIndexPath = selectedIndexPath else { return nil}
         guard let movie = movies?[selectedIndexPath.row] else { return nil}
-        // TODO: Найти способ получения imageView из png файла
-        return DetailViewModel(name: movie.title, overview: movie.overview, imageView: UIImageView())
-    }
+        return DetailViewModel(name: movie.title, overview: movie.overview, data: Data(movie.posterPath.utf8))
+    }*/
     
     func selectedRowAt(_ indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
