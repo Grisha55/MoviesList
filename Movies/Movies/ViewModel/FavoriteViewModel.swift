@@ -18,9 +18,9 @@ class FavoriteViewModel {
     private var movies: [NSManagedObject]?
     
     //MARK: - Get data from coreData
-    func fetchData() {
+    func fetchDataCoreData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext // Error
+        let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
         do {
             movies = try context.fetch(fetchRequest)

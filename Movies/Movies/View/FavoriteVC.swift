@@ -20,7 +20,7 @@ class FavoriteVC: UIViewController {
         super.viewWillAppear(animated)
         
         favoriteViewModel = FavoriteViewModel()
-        favoriteViewModel?.fetchData()
+        favoriteViewModel?.fetchDataCoreData()
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }

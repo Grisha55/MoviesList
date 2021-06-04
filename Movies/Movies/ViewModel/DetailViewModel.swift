@@ -46,12 +46,9 @@ class DetailViewModel {
         let movie = NSManagedObject(entity: entity, insertInto: context)
         movie.setValue(name, forKey: "name")
         movie.setValue(overview, forKey: "overview")
-        movie.setValue("", forKey: "title")
-        movie.setValue("", forKey: "status")
-        movie.setValue(0, forKey: "id")
+        movie.setValue(name, forKey: "title")
         
-        guard let photoURl = movie.value(forKey: "photo") else { return }
-        movie.setValue("\(urlForImage)\(photoURl)", forKey: "photo")
+        movie.setValue(urlForImage + imageViewImage, forKey: "photo")
         do {
             try context.save()
             print("Успешное сохранение")
