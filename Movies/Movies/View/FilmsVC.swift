@@ -46,6 +46,11 @@ class FilmsVC: UIViewController {
         detailVC.detailViewModel = viewModel.viewModelForSelectedRow()
     }
 
+    @IBAction func buttonExitAction(_ sender: Any) {
+        guard let viewModel = viewModel else { return }
+        viewModel.exitAction()
+        //TODO: Сделать переход на экран авторизации
+    }
 }
 
 //MARK: - UITableViewDelegate
