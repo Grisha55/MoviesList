@@ -58,10 +58,7 @@ class ViewModel: NSObject {
     func viewModelForSelectedRow() -> DetailViewModel? {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
         guard let movie = movies?[selectedIndexPath.row] else { return nil }
-        
-        guard let url = URL(string: urlForImage + movie.posterPath) else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        return DetailViewModel(name: movie.originalTitle, overview: movie.overview, photo: UIImageView(image: UIImage(data: data)))
+        return DetailViewModel(name: movie.originalTitle, overview: movie.overview, photo: movie.posterPath)
     }
     
     func selectedRowAt(_ indexPath: IndexPath) {
