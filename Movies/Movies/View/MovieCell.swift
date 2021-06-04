@@ -16,7 +16,7 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet var photoImageView: UIImageView!
     
-    weak var viewModel: MovieCellViewModel? {
+    var viewModel: MovieCellViewModel? {
         willSet(viewModel) {
             guard let viewModel = viewModel else { return }
             titleLabel.text = viewModel.title
@@ -30,4 +30,8 @@ class MovieCell: UITableViewCell {
         }
     }
     
+    @IBAction func buttonLikeAction(_ sender: UIButton) {
+        guard let viewModel = viewModel else { return }
+        viewModel.likeAction()
+    }
 }

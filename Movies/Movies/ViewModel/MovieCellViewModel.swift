@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MovieCellViewModel {
     
@@ -30,5 +31,21 @@ class MovieCellViewModel {
         self.titleString = title
         self.overviewString = overview
         self.photoData = photoString
+    }
+    //MARK: - Methods
+    func likeAction() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        guard let entity = NSEntityDescription.entity(forEntityName: "Movie", in: context) else { return }
+        let movie = NSManagedObject(entity: entity, insertInto: context)
+        movie.setValue(title, forKey: "name")
+        movie.setValue(overview, forKey: "overview")
+        movie.setValue(photoString, forKey: "photo")
+        do {
+            try context.save()
+            print("Данные сохранены")
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

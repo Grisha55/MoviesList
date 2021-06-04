@@ -19,7 +19,7 @@ class NetworkingService: NSObject {
         var constructor = URLComponents()
         constructor.scheme = "https"
         constructor.host = "api.themoviedb.org"
-        constructor.path = "/3/movie/popular/"
+        constructor.path =  "/3/movie/top_rated"
         constructor.queryItems = [
             URLQueryItem(name: "api_key", value: "6fc493937e1259d088b4ba87dc174e57")
         ]
