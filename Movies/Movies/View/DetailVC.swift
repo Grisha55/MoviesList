@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailVC: UIViewController {
 
@@ -34,8 +35,23 @@ class DetailVC: UIViewController {
     }
     
     @IBAction func buttonSaveAction(_ sender: Any) {
-        guard let detailViewModel = detailViewModel else { return }
-        detailViewModel.saveData()
+        
+        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+            if user == nil {
+                self?.showModalAuth()
+            } else {
+                guard let detailViewModel = self?.detailViewModel else { return }
+                detailViewModel.saveData()
+            }
+        }
+        
+        
+    }
+    
+    func showModalAuth() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let new = storyboard.instantiateViewController(withIdentifier: "RegistrationVC") as! RegistrationVC
+        self.present(new, animated: true, completion: nil)
     }
     
 }

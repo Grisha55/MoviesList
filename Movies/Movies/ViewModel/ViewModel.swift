@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
  
 class ViewModel: NSObject {
     
@@ -31,6 +32,14 @@ class ViewModel: NSObject {
                 self?.movies = movies
                 completion()
             }
+        }
+    }
+    
+    func exitAction() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
