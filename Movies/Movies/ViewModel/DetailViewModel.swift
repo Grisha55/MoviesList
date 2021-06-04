@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewModel {
+    
+    //MARK: - Constants
+    let urlForImage = "https://image.tmdb.org/t/p/w300"
     
     //MARK: - Properties
     private var nameString: String
     private var overviewText: String
-    private var imageViewImage: UIImageView
+    private var imageViewImage: String
     
     var name: String {
         return nameString
@@ -23,10 +27,12 @@ class DetailViewModel {
     }
     
     var photoImageView: UIImageView {
-        return imageViewImage
+        guard let url = URL(string: urlForImage + imageViewImage) else { return UIImageView() }
+        guard let data = try? Data(contentsOf: url) else { return UIImageView() }
+        return UIImageView(image: UIImage(data: data))
     }
     
-    init(name: String, overview: String, photo: UIImageView) {
+    init(name: String, overview: String, photo: String) {
         self.nameString = name
         self.overviewText = overview
         self.imageViewImage = photo
@@ -36,10 +42,16 @@ class DetailViewModel {
     func saveData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
-        let movie = Movie(context: context)
-        movie.name = name
-        movie.overview = overview
-        movie.photo = photoImageView.image?.jpegData(compressionQuality: 1.0)
+        let entity = NSEntityDescription.entity(forEntityName: "Movie", in: context)!
+        let movie = NSManagedObject(entity: entity, insertInto: context)
+        movie.setValue(name, forKey: "name")
+        movie.setValue(overview, forKey: "overview")
+        movie.setValue("", forKey: "title")
+        movie.setValue("", forKey: "status")
+        movie.setValue(0, forKey: "id")
+        
+        guard let photoURl = movie.value(forKey: "photo") else { return }
+        movie.setValue("\(urlForImage)\(photoURl)", forKey: "photo")
         do {
             try context.save()
             print("Успешное сохранение")

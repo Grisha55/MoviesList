@@ -21,7 +21,9 @@ class FavoriteVC: UIViewController {
         
         favoriteViewModel = FavoriteViewModel()
         favoriteViewModel?.fetchData()
-        tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {

@@ -2,7 +2,7 @@
 //  Movie+CoreDataClass.swift
 //  Movies
 //
-//  Created by Григорий Виняр on 03.06.2021.
+//  Created by Григорий Виняр on 04.06.2021.
 //
 //
 
