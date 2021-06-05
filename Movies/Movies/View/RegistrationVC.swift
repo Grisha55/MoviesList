@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class RegistrationVC: UIViewController {
-
+    
     var registrationViewModel: RegistrationViewModel?
     
     //MARK: - Properties
@@ -37,7 +37,7 @@ class RegistrationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setDelegates()
     }
     //MARK: - Make textField delegates
@@ -70,30 +70,21 @@ extension RegistrationVC: UITextFieldDelegate {
         guard let email = emailTF.text else { return false }
         guard let password = passwordTF.text else { return false }
         
-        if signup {
-            if(!name.isEmpty && !email.isEmpty && !password.isEmpty) {
-                Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
-                    if error == nil {
-                        if let result = result {
-                            print(result.user.uid)
-                            let ref = Database.database().reference().child("users")
-                            ref.child(result.user.uid).updateChildValues(["name" : name , "email" : email])
-                            self?.dismiss(animated: true, completion: nil)
-                        }
-                    }
-                }
-            } else {
-                showAlert()
+        //MARK: - Firebase log in
+        DatabaseManager.shared.userExists(with: email) { [weak self] exist in
+            guard !exist else {
+                self?.showAlert()
+                return
             }
-        } else {
-            if !email.isEmpty && !password.isEmpty {
-                Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
-                    if error == nil {
-                        self?.dismiss(animated: true, completion: nil)
-                    }
+            
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+                guard authResult != nil, error == nil else {
+                    self?.showAlert()
+                    return
                 }
-            } else {
-                showAlert()
+                
+                DatabaseManager.shared.insertUser(with: MovieUser(firstName: name, lastName: name, emailAdress: email))
+                self?.dismiss(animated: true, completion: nil)
             }
         }
         return true

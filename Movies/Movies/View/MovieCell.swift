@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MovieCell: UITableViewCell {
 
@@ -22,11 +23,10 @@ class MovieCell: UITableViewCell {
             titleLabel.text = viewModel.title
             overviewLabel.text = viewModel.overview
             
-            guard let url = URL(string: urlForImage + viewModel.photoString) else { return }
+            let imageView = UIImageView()
+            imageView.sd_setImage(with: URL(string: urlForImage + viewModel.photoString), placeholderImage: UIImage(systemName: "person.3"))
             
-            guard let data = try? Data(contentsOf: url) else { return }
-            
-            photoImageView.image = UIImage(data: data)
+            photoImageView.image = imageView.image
         }
     }
     

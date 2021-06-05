@@ -49,8 +49,22 @@ class FilmsVC: UIViewController {
     @IBAction func buttonExitAction(_ sender: Any) {
         guard let viewModel = viewModel else { return }
         viewModel.exitAction()
-        //TODO: Сделать переход на экран авторизации
+        showExitAlert()
     }
+    
+    func showExitAlert() {
+        let alertVC = UIAlertController(title: "Do you want to logged out", message: "", preferredStyle: .alert)
+        let alertActionOne = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
+            guard let viewModel = self?.viewModel else { return }
+            viewModel.exitAction()
+        }
+        let alertActionTwo = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertVC.addAction(alertActionOne)
+        alertVC.addAction(alertActionTwo)
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
 }
 
 //MARK: - UITableViewDelegate
