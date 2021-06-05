@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,7 @@
 		BE80A6EB26680BBC00BE609D /* MovieCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */; };
 		BEC4680F26689B14001E9C6A /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4680E26689B14001E9C6A /* FavoriteVC.swift */; };
 		BEC4681126689B9F001E9C6A /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC4681026689B9F001E9C6A /* FavoriteViewModel.swift */; };
+		BED3E2D6266B532000895DC1 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED3E2D5266B532000895DC1 /* DatabaseManager.swift */; };
 		D031C0ADBCBDC559C10F7FD3 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E19AFC46A4F1F8E967C536C /* Pods_Movies.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellViewModel.swift; sourceTree = "<group>"; };
 		BEC4680E26689B14001E9C6A /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
 		BEC4681026689B9F001E9C6A /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		BED3E2D5266B532000895DC1 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +88,6 @@
 				75A9B10247D5870EEC9981A8 /* Pods-Movies.debug.xcconfig */,
 				5ABD609BBE53CB46EC327305 /* Pods-Movies.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -133,6 +134,7 @@
 				BE80A6D82667D3B800BE609D /* Networking */,
 				BE80A6D72667D31300BE609D /* Model */,
 				BE80A6BC2667CAB900BE609D /* AppDelegate.swift */,
+				BED3E2D5266B532000895DC1 /* DatabaseManager.swift */,
 				BE80A6BE2667CAB900BE609D /* SceneDelegate.swift */,
 				BE80A6C22667CAB900BE609D /* Main.storyboard */,
 				BE80A6C82667CABB00BE609D /* Assets.xcassets */,
@@ -318,6 +320,7 @@
 				BE80A6E02667E87900BE609D /* ViewModel.swift in Sources */,
 				BE80A6E8266802F700BE609D /* MovieCell.swift in Sources */,
 				BE78AC32266A541F0015FD1C /* RegistrationViewModel.swift in Sources */,
+				BED3E2D6266B532000895DC1 /* DatabaseManager.swift in Sources */,
 				BEC4681126689B9F001E9C6A /* FavoriteViewModel.swift in Sources */,
 				BE210693266953D900A9B1A5 /* FavoriteCellViewModel.swift in Sources */,
 				BE80A6DD2667D42100BE609D /* NetworkingModel.swift in Sources */,
