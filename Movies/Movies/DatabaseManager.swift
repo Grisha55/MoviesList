@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseDatabase
+import Firebase
 
 class DatabaseManager {
     
@@ -18,7 +19,7 @@ class DatabaseManager {
 //MARK: - Account Management
 extension DatabaseManager {
     
-    public func userExists(with email: String, completion: @escaping ((Bool)-> Void)) {
+    public func userExists(name: String, email: String, password: String, completion: @escaping ((Bool)-> Void)) {
         
         var safeEmail = email.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
