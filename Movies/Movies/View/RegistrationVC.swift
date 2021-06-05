@@ -70,26 +70,40 @@ extension RegistrationVC: UITextFieldDelegate {
         guard let email = emailTF.text else { return false }
         guard let password = passwordTF.text else { return false }
         
-        DatabaseManager.shared.userExists(with: email, completion: { [weak self] exist in
-            guard !exist else {
-                self?.showAlert(message: "This email have already aplied")
-                return
+        //MARK: - If user aren't registrated yet
+        if signup {
+            
+            guard !name.isEmpty, !password.isEmpty, !email.isEmpty else {
+                
+                self.showAlert(message: "You shoul enter all the fields")
+                
+                return false
             }
             
-            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            DatabaseManager.shared.userExists(name: name, email: email, password: password) { [weak self] exist in
                 
-                guard authResult != nil, error == nil else {
-                    print("Error creating user")
-                    return
+                FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+                    
+                    guard authResult != nil, error == nil else {
+                        return
+                    }
+                    
+                    DatabaseManager.shared.insertUser(with: MovieUser(name: name, email: email))
+                    self?.dismiss(animated: true, completion: nil)
                 }
                 
-                DatabaseManager.shared.insertUser(with: MovieUser(name: name,
-                                                                  email: email))
-                self?.dismiss(animated: true, completion: nil)
-                
             }
             
-        })
+        // MARK: - If user have already registrated yet
+        } else {
+            Firebase.Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+                guard authResult != nil, error == nil else {
+                    self?.showAlert(message: "Error")
+                    return
+                }
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
         return true
     }
 }
