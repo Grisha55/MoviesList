@@ -215,7 +215,7 @@
                     <connections>
                         <outlet property="buttonLogIn" destination="TdI-R3-vlm" id="xyg-J0-olZ"/>
                         <outlet property="emailTF" destination="EGU-B0-eXA" id="Jk9-vz-VhH"/>
-                        <outlet property="nameTF" destination="80w-b7-nfs" id="20o-3g-Nxd"/>
+                        <outlet property="nameTF" destination="80w-b7-nfs" id="qfm-6U-1qS"/>
                         <outlet property="passwordTF" destination="VTo-O9-CqU" id="9fK-ov-jxP"/>
                         <outlet property="questionLabel" destination="8Ft-OI-L6j" id="eqT-3a-Y3l"/>
                         <outlet property="titleLabel" destination="Zj0-S8-W5G" id="Te4-zD-kG4"/>
