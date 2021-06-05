@@ -52,8 +52,8 @@ class RegistrationVC: UIViewController {
     }
     
     //MARK: - Errors catching
-    func showAlert() {
-        let alertVC = UIAlertController(title: "Error", message: "Fill in all the fields", preferredStyle: .alert)
+    func showAlert(message: String) {
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertVC.addAction(alertAction)
         self.present(alertVC, animated: true, completion: nil)
@@ -70,23 +70,26 @@ extension RegistrationVC: UITextFieldDelegate {
         guard let email = emailTF.text else { return false }
         guard let password = passwordTF.text else { return false }
         
-        //MARK: - Firebase log in
-        DatabaseManager.shared.userExists(with: email) { [weak self] exist in
+        DatabaseManager.shared.userExists(with: email, completion: { [weak self] exist in
             guard !exist else {
-                self?.showAlert()
+                self?.showAlert(message: "This email have already aplied")
                 return
             }
             
-            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                
                 guard authResult != nil, error == nil else {
-                    self?.showAlert()
+                    print("Error creating user")
                     return
                 }
                 
-                DatabaseManager.shared.insertUser(with: MovieUser(firstName: name, lastName: name, emailAdress: email))
+                DatabaseManager.shared.insertUser(with: MovieUser(name: name,
+                                                                  email: email))
                 self?.dismiss(animated: true, completion: nil)
+                
             }
-        }
+            
+        })
         return true
     }
 }
