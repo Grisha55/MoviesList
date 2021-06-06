@@ -23,7 +23,7 @@ class DetailVC: UIViewController {
         setupProperties()
     }
     
-    //MARK: - Setup properties
+    // Setup properties
     func setupProperties() {
         
         guard let detailViewModel = detailViewModel else { return }
@@ -36,22 +36,6 @@ class DetailVC: UIViewController {
     
     @IBAction func buttonSaveAction(_ sender: Any) {
         
-        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-            if user == nil {
-                self?.showModalAuth()
-            } else {
-                guard let detailViewModel = self?.detailViewModel else { return }
-                detailViewModel.saveData()
-            }
-        }
-        
-        
+        detailViewModel?.saveToFB(controller: self)
     }
-    
-    func showModalAuth() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let new = storyboard.instantiateViewController(withIdentifier: "RegistrationVC") as! RegistrationVC
-        self.present(new, animated: true, completion: nil)
-    }
-    
 }

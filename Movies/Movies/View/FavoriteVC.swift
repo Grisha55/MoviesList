@@ -24,6 +24,7 @@ class FavoriteVC: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
+        favoriteViewModel?.loadDataFromFirebase()
     }
     
     override func viewDidLoad() {
@@ -31,7 +32,7 @@ class FavoriteVC: UIViewController {
         setupTableView()
     }
     
-    //MARK: - Setup tableView
+    // Setup tableView
     func setupTableView() {
         favoriteViewModel = FavoriteViewModel()
         tableView.delegate = self

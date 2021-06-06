@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class FavoriteViewModel {
     
@@ -53,5 +54,14 @@ class FavoriteViewModel {
     //MARK: - UITableViewDelegate
     func heightForRowAt() -> CGFloat {
         return 150.0
+    }
+    
+    func loadDataFromFirebase() {
+        Database.database().reference().getData { error, snapshot in
+            guard error == nil else { return }
+            for film in snapshot.children.allObjects {
+                print(film)
+            }
+        }
     }
 }

@@ -23,7 +23,7 @@ class FilmsVC: UIViewController {
         settingsTableView()
     }
     
-    //MARK: - settingsTableView()
+    // Setup tableView
     private func settingsTableView() {
         
         viewModel = ViewModel()
@@ -39,7 +39,7 @@ class FilmsVC: UIViewController {
         }
     }
     
-    //MARK: - Transition
+    // Transition
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == toDetailVC, let viewModel = viewModel else { return }
         guard let detailVC = segue.destination as? DetailVC else { return }
@@ -49,22 +49,8 @@ class FilmsVC: UIViewController {
     @IBAction func buttonExitAction(_ sender: Any) {
         guard let viewModel = viewModel else { return }
         viewModel.exitAction()
-        showExitAlert()
+        viewModel.showExitAlert(title: "Do you want to logged out?", massage: "", controller: self)
     }
-    
-    func showExitAlert() {
-        let alertVC = UIAlertController(title: "Do you want to logged out", message: "", preferredStyle: .alert)
-        let alertActionOne = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
-            guard let viewModel = self?.viewModel else { return }
-            viewModel.exitAction()
-        }
-        let alertActionTwo = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alertVC.addAction(alertActionOne)
-        alertVC.addAction(alertActionTwo)
-        self.present(alertVC, animated: true, completion: nil)
-    }
-    
 }
 
 //MARK: - UITableViewDelegate
