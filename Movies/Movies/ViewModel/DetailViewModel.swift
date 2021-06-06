@@ -86,17 +86,12 @@ class DetailViewModel {
         let user = Auth.auth().currentUser
         guard let userClone = user else { return }
         
-        // создаем путь
-        db.child(userClone.uid).child("favourite").child("movie").child("nameMovie")
-        
         // создаем прототип фильма
         let film = MovieDatabase(title: name, overview: overview, photo: urlForImage + imageViewImage)
         
-        // добавляем объкт в базу
-        db.child(name).setValue([
-            
-            name : film.asPropertyList
-        ])
+        // создаем путь
+        db.child("users").child(userClone.uid).child("favourites").child(name).setValue(film.asPropertyList)
+        
         
     }
     //MARK: Movie

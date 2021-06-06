@@ -38,7 +38,8 @@ class RegistrationViewModel {
                 guard authResult != nil, error == nil else {
                     return
                 }
-                DatabaseManager.shared.insertUser(with: MovieUser(name: name, email: email))
+                //guard let userID = Auth.auth().currentUser?.uid else { return }
+                //DatabaseManager.shared.insertUser(with: MovieUser(name: name, email: email, id: userID))
                 controller.dismiss(animated: true, completion: nil)
             }
             
