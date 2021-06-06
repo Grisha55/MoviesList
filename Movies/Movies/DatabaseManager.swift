@@ -5,7 +5,7 @@
 //  Created by Григорий Виняр on 05.06.2021.
 //
 
-import Foundation
+import UIKit
 import FirebaseDatabase
 import Firebase
 
@@ -41,7 +41,7 @@ extension DatabaseManager {
         ])
     }
 }
-
+//MARK: User in Database
 struct MovieUser {
     let name: String
     let email: String

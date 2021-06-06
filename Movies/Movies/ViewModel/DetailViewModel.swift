@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class DetailViewModel {
     
@@ -37,6 +38,13 @@ class DetailViewModel {
         self.overviewText = overview
         self.imageViewImage = photo
     }
+    // MARK: - Transition
+    func showModalAuth(controller: UIViewController?) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let new = storyboard.instantiateViewController(withIdentifier: "RegistrationVC") as! RegistrationVC
+        guard let controller = controller else { return }
+        controller.present(new, animated: true, completion: nil)
+    }
     
     //MARK: - Save data into coreData
     func saveData() {
@@ -54,6 +62,57 @@ class DetailViewModel {
             print("Успешное сохранение")
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    func saveToFB(controller: UIViewController) {
+        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+            if user == nil {
+                self?.showModalAuth(controller: controller)
+            } else {
+                self?.saveData()
+                self?.loadMovieIntoDatabase()
+            }
+        }
+    }
+    
+    //MARK: - Save movie into database
+    func loadMovieIntoDatabase() {
+        
+        // создаем ссылку на базу данных
+        let db = Database.database().reference()
+        
+        // получаем юзера, который сейчас вошел
+        let user = Auth.auth().currentUser
+        guard let userClone = user else { return }
+        
+        // создаем путь
+        db.child(userClone.uid).child("favourite").child("movie").child("nameMovie")
+        
+        // создаем прототип фильма
+        let film = MovieDatabase(title: name, overview: overview, photo: urlForImage + imageViewImage)
+        
+        // добавляем объкт в базу
+        db.child(name).setValue([
+            
+            name : film.asPropertyList
+        ])
+        
+    }
+    //MARK: Movie
+    struct MovieDatabase {
+        var title: String
+        var overview: String
+        var photo: String
+        
+        var asPropertyList: NSDictionary {
+            let result = NSMutableDictionary()
+            
+            // Implicit conversions turn String into NSString here…
+            result["title"] = self.title
+            result["overview"] = self.overview
+            result["photo"] = self.photo
+            return result
         }
     }
 }
