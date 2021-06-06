@@ -36,8 +36,9 @@ extension DatabaseManager {
     
     /// Inserts new user to database
     public func insertUser(with user: MovieUser) {
-        database.child(user.safeEmail).setValue([
-            "name": user.name
+        database.child("users").setValue([
+            //"name": user.name,
+            "id": user.id
         ])
     }
 }
@@ -45,6 +46,7 @@ extension DatabaseManager {
 struct MovieUser {
     let name: String
     let email: String
+    let id: String
     
     var safeEmail: String {
         var safeEmail = email.replacingOccurrences(of: ".", with: "-")
