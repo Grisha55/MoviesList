@@ -47,7 +47,7 @@ class DetailViewModel {
     }
     
     //MARK: - Save data into coreData
-    func saveData() {
+    /*func saveData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Movie", in: context)!
@@ -63,14 +63,14 @@ class DetailViewModel {
         } catch {
             print(error.localizedDescription)
         }
-    }
+    }*/
     
     func saveToFB(controller: UIViewController) {
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             if user == nil {
                 self?.showModalAuth(controller: controller)
             } else {
-                self?.saveData()
+                //self?.saveData()
                 self?.loadMovieIntoDatabase()
             }
         }
@@ -86,28 +86,37 @@ class DetailViewModel {
         let user = Auth.auth().currentUser
         guard let userClone = user else { return }
         
-        // создаем прототип фильма
-        let film = MovieDatabase(title: name, overview: overview, photo: urlForImage + imageViewImage)
-        
         // создаем путь
-        db.child("users").child(userClone.uid).child("favourites").child(name).setValue(film.asPropertyList)
+        db.child("users").child(userClone.uid).child("favourites").child(name).setValue([
+            "title": name,
+            "overview": overview,
+            "photo": imageViewImage
+        ])
         
         
     }
-    //MARK: Movie
-    struct MovieDatabase {
-        var title: String
-        var overview: String
-        var photo: String
+}
+//MARK: Movie
+struct MovieDatabase {
+    var title: String?
+    var overview: String?
+    var photo: String?
+    
+    var asPropertyList: NSDictionary {
+        let result = NSMutableDictionary()
         
-        var asPropertyList: NSDictionary {
-            let result = NSMutableDictionary()
-            
-            // Implicit conversions turn String into NSString here…
-            result["title"] = self.title
-            result["overview"] = self.overview
-            result["photo"] = self.photo
-            return result
-        }
+        // Implicit conversions turn String into NSString here…
+        result["title"] = self.title
+        result["overview"] = self.overview
+        result["photo"] = self.photo
+        return result
+    }
+    // Init
+    init(snapshot: DataSnapshot) {
+        let snapshotValue = snapshot.value as! [String: Any]
+        self.title = snapshotValue["title"] as? String
+        self.overview = snapshotValue["overview"] as? String
+        self.photo = snapshotValue["photo"] as? String
+        
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 class FilmsVC: UIViewController {
 
     private var viewModel: ViewModel?
-    
+    private var networkingService = NetworkingService()
     //MARK: - Constants
     let toDetailVC = "toDetailVC"
     let identifier = "movieCell"
@@ -21,22 +21,18 @@ class FilmsVC: UIViewController {
         super.viewDidLoad()
         
         settingsTableView()
+        viewModel?.getMoviesFromFB()
+        
     }
     
     // Setup tableView
     private func settingsTableView() {
         
         viewModel = ViewModel()
-        
         tableView.delegate = self
         tableView.dataSource = self
         viewModel?.registerCell(tableView: tableView)
         
-        viewModel?.fetchMovies {
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
-            }
-        }
     }
     
     // Transition

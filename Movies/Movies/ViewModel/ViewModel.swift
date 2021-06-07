@@ -7,7 +7,8 @@
 
 import UIKit
 import Firebase
- 
+import CoreData
+
 class ViewModel: NSObject {
     
     //MARK: - Constants
@@ -19,22 +20,32 @@ class ViewModel: NSObject {
     
     var selectedIndexPath: IndexPath?
     
-    var movies: [Results]?
+    var movies = [NSManagedObject]()
     
-    //MARK: - Get movies
-    func fetchMovies(completion: @escaping() -> Void) {
+    func getMoviesFromFB() {
         networkingService = NetworkingService()
-        networkingService.fetchData { [weak self] (result) in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let movies):
-                self?.movies = movies
-                completion()
-            }
+        networkingService.fetchData()
+        if movies.count == 0 {
+            networkingService.fetchData()
+            fetchMovies()
+        } else {
+            fetchMovies()
         }
     }
     
+    // Get movies from CoreData
+    func fetchMovies() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
+        do {
+            let movies = try context.fetch(fetchRequest)
+            self.movies = movies
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    // Exit from movie app
     func exitAction() {
         do {
             try Auth.auth().signOut()
@@ -57,18 +68,16 @@ class ViewModel: NSObject {
     
     //MARK: - for TableViewDataSource
     func numberOfRows() -> Int {
-        guard let movies = movies else { return 0 }
         return movies.count
     }
     
     func cellForRowAt(indexPath: IndexPath) -> MovieCellViewModel? {
-        guard let movies = movies else { return nil }
         
         let movie = movies[indexPath.row]
         
-        let photoPath = movie.posterPath
+        let photoPath = movie.value(forKey: "photo") as! String
         
-        return MovieCellViewModel(title: movie.title, overview: movie.overview, photoString: urlForImage + photoPath)
+        return MovieCellViewModel(title: movie.value(forKey: "title") as! String, overview: movie.value(forKey: "overview") as! String, photoString: urlForImage + photoPath)
     }
     
     //MARK: - for TableViewDelegate
@@ -78,8 +87,8 @@ class ViewModel: NSObject {
     
     func viewModelForSelectedRow() -> DetailViewModel? {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
-        guard let movie = movies?[selectedIndexPath.row] else { return nil }
-        return DetailViewModel(name: movie.originalTitle, overview: movie.overview, photo: movie.posterPath)
+        let movie = movies[selectedIndexPath.row]
+        return DetailViewModel(name: movie.value(forKey: "title") as! String, overview: movie.value(forKey: "overview") as! String, photo: movie.value(forKey: "photo") as! String)
     }
     
     func selectedRowAt(_ indexPath: IndexPath) {
@@ -90,3 +99,4 @@ class ViewModel: NSObject {
         tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: identifier)
     }
 }
+
