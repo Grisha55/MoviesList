@@ -16,21 +16,21 @@ class FavoriteViewModel {
     let urlForImage = "https://image.tmdb.org/t/p/w300"
     
     //MARK: - Properties
-    private var movies: [NSManagedObject]?
+    private var movies = [MovieDatabase]()
     
-    //MARK: - Get data from coreData
-    func fetchDataCoreData() {
+    // Get data from coreData
+    /*func fetchDataCoreData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
         do {
-            movies = try context.fetch(fetchRequest)
+            //movies = try context.fetch(fetchRequest)
         } catch {
             print(error.localizedDescription)
         }
-    }
+    }*/
     
-    //MARK: - RegisterCell
+    // RegisterCell
     func registerCell(tableView: UITableView) {
         tableView.register(UINib(nibName: "FavoriteCell", bundle: nil), forCellReuseIdentifier: identifier)
     }
@@ -38,16 +38,16 @@ class FavoriteViewModel {
     //MARK: - UITableViewDataSource
     func cellForRowAt(_ indexPath: IndexPath) -> FavoriteCellViewModel? {
         
-        guard let movies = movies else { return nil }
+        let movies = movies
         let movie = movies[indexPath.row]
-        guard let photoURL = movie.value(forKey: "photo") else { return nil }
+        guard let photoURL = movie.photo else { return nil }
         guard let url = URL(string: "\(urlForImage)\(photoURL)") else { return nil }
         guard let data = try? Data(contentsOf: url) else { return nil }
-        return FavoriteCellViewModel(photoImageView: UIImageView(image: UIImage(data: data)), nameLabel: movie.value(forKey: "name") as? String ?? "N/A")
+        return FavoriteCellViewModel(photoImageView: UIImageView(image: UIImage(data: data)), nameLabel: movie.title ?? "N/A")
     }
     
     func numberOfRows() -> Int {
-        guard let movies = movies else { return 0 }
+        //guard let movies = movies else { return 0 }
         return movies.count
     }
     
@@ -56,12 +56,25 @@ class FavoriteViewModel {
         return 150.0
     }
     
-    func loadDataFromFirebase() {
-        Database.database().reference().getData { error, snapshot in
-            guard error == nil else { return }
-            for film in snapshot.children.allObjects {
-                print(film)
+    // Load data from Firebase
+    func loadDataFromFirebase(tableView: UITableView) {
+        
+        guard let user = Auth.auth().currentUser else { return }
+        
+        let refMovies = Database.database().reference(withPath: "users").child(user.uid).child("favourites")
+        
+        refMovies.observe(.value) { [weak self] snapshot in
+            
+            var _movies = Array<MovieDatabase>()
+            
+            for movie in snapshot.children {
+                
+                let movie = MovieDatabase(snapshot: movie as! DataSnapshot)
+                
+                _movies.append(movie)
             }
+            self?.movies = _movies
+            tableView.reloadData()
         }
     }
 }
