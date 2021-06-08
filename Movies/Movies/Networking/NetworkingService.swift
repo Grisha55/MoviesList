@@ -45,36 +45,15 @@ class NetworkingService: NSObject {
                 let movies = try JSONDecoder().decode(NetworkingMovies.self, from: data)
                 let moviesList = movies.results
                 moviesList.forEach { [weak self] movie in
-                    
-                    // TODO: Сделать сохранение в coreData
+                   
                     DispatchQueue.main.async {
-                        self?.saveData(name: movie.title, overview: movie.overview, photoURL: self!.urlForImage + movie.posterPath)
-                    }
-                    
+                        DataStore().saveData(name: movie.originalTitle, overview: movie.overview, photoURL: self!.urlForImage + movie.posterPath)
+                    } 
                 }
-                
             } catch {
                 print(error.localizedDescription)
             }
-            
         }
         task.resume()
-    }
-    // Save data to CoreData
-    func saveData(name: String, overview: String, photoURL: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Movie", in: context)!
-        let movie = NSManagedObject(entity: entity, insertInto: context)
-        movie.setValue(name, forKey: "name")
-        movie.setValue(overview, forKey: "overview")
-        movie.setValue(name, forKey: "title")
-        movie.setValue(photoURL, forKey: "photo")
-        
-        do {
-            try context.save()
-        } catch {
-            print(error.localizedDescription)
-        }
     }
 }

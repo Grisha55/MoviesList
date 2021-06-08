@@ -36,6 +36,6 @@ class DetailVC: UIViewController {
     
     @IBAction func buttonSaveAction(_ sender: Any) {
         
-        detailViewModel?.saveToFB(controller: self)
+        detailViewModel?.saveToUserToFB(controller: self)
     }
 }
