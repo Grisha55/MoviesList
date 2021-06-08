@@ -18,18 +18,6 @@ class FavoriteViewModel {
     //MARK: - Properties
     private var movies = [MovieDatabase]()
     
-    // Get data from coreData
-    /*func fetchDataCoreData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
-        do {
-            //movies = try context.fetch(fetchRequest)
-        } catch {
-            print(error.localizedDescription)
-        }
-    }*/
-    
     // RegisterCell
     func registerCell(tableView: UITableView) {
         tableView.register(UINib(nibName: "FavoriteCell", bundle: nil), forCellReuseIdentifier: identifier)
@@ -38,7 +26,6 @@ class FavoriteViewModel {
     //MARK: - UITableViewDataSource
     func cellForRowAt(_ indexPath: IndexPath) -> FavoriteCellViewModel? {
         
-        let movies = movies
         let movie = movies[indexPath.row]
         guard let photoURL = movie.photo else { return nil }
         guard let url = URL(string: "\(urlForImage)\(photoURL)") else { return nil }
@@ -47,7 +34,7 @@ class FavoriteViewModel {
     }
     
     func numberOfRows() -> Int {
-        //guard let movies = movies else { return 0 }
+        
         return movies.count
     }
     

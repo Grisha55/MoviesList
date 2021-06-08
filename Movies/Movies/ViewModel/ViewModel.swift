@@ -17,53 +17,21 @@ class ViewModel: NSObject {
     
     //MARK: - Properties
     private var networkingService: NetworkingService!
+    private var dataStore: DataStore!
     
     var selectedIndexPath: IndexPath?
     
     var movies = [NSManagedObject]()
     
-    func getMoviesFromFB() {
+    func getMoviesFromCD() {
         networkingService = NetworkingService()
+        dataStore = DataStore()
         networkingService.fetchData()
         if movies.count == 0 {
-            networkingService.fetchData()
-            fetchMovies()
+            movies = dataStore.fetchMovies()
         } else {
-            fetchMovies()
+            networkingService.fetchData()
         }
-    }
-    
-    // Get movies from CoreData
-    func fetchMovies() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
-        do {
-            let movies = try context.fetch(fetchRequest)
-            self.movies = movies
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    // Exit from movie app
-    func exitAction() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func showExitAlert(title: String, massage: String, controller: UIViewController) {
-        let alertVC = UIAlertController(title: title, message: massage, preferredStyle: .alert)
-        let alertActionOne = UIAlertAction(title: "Yes", style: .default) { [weak self] _ in
-            self?.exitAction()
-        }
-        let alertActionTwo = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alertVC.addAction(alertActionOne)
-        alertVC.addAction(alertActionTwo)
-        controller.present(alertVC, animated: true, completion: nil)
     }
     
     //MARK: - for TableViewDataSource

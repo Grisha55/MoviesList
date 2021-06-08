@@ -9,29 +9,27 @@ import UIKit
 import Firebase
 
 class FavoriteVC: UIViewController {
-
+    
     //MARK: - Constants
     let identifier = "favoriteCell"
-    var movies = [MovieDatabase]()
+    
     @IBOutlet weak var tableView: UITableView!
     
     var favoriteViewModel: FavoriteViewModel?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        loadAllData()
+    }
+    
+    func loadAllData() {
         setupTableView()
         favoriteViewModel = FavoriteViewModel()
-        //favoriteViewModel?.fetchDataCoreData()
+        favoriteViewModel?.loadDataFromFirebase(tableView: tableView)
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
-        // Load data from Firebase
-        favoriteViewModel?.loadDataFromFirebase(tableView: tableView)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupTableView()
     }
     
     // Setup tableView
@@ -40,6 +38,7 @@ class FavoriteVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         favoriteViewModel?.registerCell(tableView: tableView)
+        
     }
 }
 

@@ -11,6 +11,7 @@ class FilmsVC: UIViewController {
 
     private var viewModel: ViewModel?
     private var networkingService = NetworkingService()
+    
     //MARK: - Constants
     let toDetailVC = "toDetailVC"
     let identifier = "movieCell"
@@ -21,8 +22,6 @@ class FilmsVC: UIViewController {
         super.viewDidLoad()
         
         settingsTableView()
-        viewModel?.getMoviesFromFB()
-        
     }
     
     // Setup tableView
@@ -32,7 +31,7 @@ class FilmsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         viewModel?.registerCell(tableView: tableView)
-        
+        viewModel?.getMoviesFromCD()
     }
     
     // Transition
@@ -43,9 +42,8 @@ class FilmsVC: UIViewController {
     }
 
     @IBAction func buttonExitAction(_ sender: Any) {
-        guard let viewModel = viewModel else { return }
-        viewModel.exitAction()
-        viewModel.showExitAlert(title: "Do you want to logged out?", massage: "", controller: self)
+        DataStore().exitAction()
+        Alerts().showExitAlert(title: "Exit", massage: "", titleForFirstAction: "Yes", titleForSecondAction: "Cancel", controller: self)
     }
 }
 

@@ -38,6 +38,7 @@ class DetailViewModel {
         self.overviewText = overview
         self.imageViewImage = photo
     }
+    //TODO: Перенести этот метод в отдельный класс
     // MARK: - Transition
     func showModalAuth(controller: UIViewController?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -45,55 +46,15 @@ class DetailViewModel {
         guard let controller = controller else { return }
         controller.present(new, animated: true, completion: nil)
     }
-    
-    //MARK: - Save data into coreData
-    /*func saveData() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Movie", in: context)!
-        let movie = NSManagedObject(entity: entity, insertInto: context)
-        movie.setValue(name, forKey: "name")
-        movie.setValue(overview, forKey: "overview")
-        movie.setValue(name, forKey: "title")
-        
-        movie.setValue(urlForImage + imageViewImage, forKey: "photo")
-        do {
-            try context.save()
-            print("Успешное сохранение")
-        } catch {
-            print(error.localizedDescription)
-        }
-    }*/
-    
-    func saveToFB(controller: UIViewController) {
+    //TODO: Попробовать перенести этот метод в FirebaseStore
+    func saveToUserToFB(controller: UIViewController) {
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             if user == nil {
                 self?.showModalAuth(controller: controller)
             } else {
-                //self?.saveData()
-                self?.loadMovieIntoDatabase()
+                FirebaseStore().loadDataToFirestore(name: self?.name ?? "N/A", overview: self?.overview ?? "N/A", photoImageViewImage: self?.imageViewImage ?? "")
             }
         }
-    }
-    
-    //MARK: - Save movie into database
-    func loadMovieIntoDatabase() {
-        
-        // создаем ссылку на базу данных
-        let db = Database.database().reference()
-        
-        // получаем юзера, который сейчас вошел
-        let user = Auth.auth().currentUser
-        guard let userClone = user else { return }
-        
-        // создаем путь
-        db.child("users").child(userClone.uid).child("favourites").child(name).setValue([
-            "title": name,
-            "overview": overview,
-            "photo": imageViewImage
-        ])
-        
-        
     }
 }
 //MARK: Movie
@@ -102,16 +63,6 @@ struct MovieDatabase {
     var overview: String?
     var photo: String?
     
-    var asPropertyList: NSDictionary {
-        let result = NSMutableDictionary()
-        
-        // Implicit conversions turn String into NSString here…
-        result["title"] = self.title
-        result["overview"] = self.overview
-        result["photo"] = self.photo
-        return result
-    }
-    // Init
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: Any]
         self.title = snapshotValue["title"] as? String
