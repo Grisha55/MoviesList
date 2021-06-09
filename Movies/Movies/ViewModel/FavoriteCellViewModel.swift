@@ -6,23 +6,32 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FavoriteCellViewModel {
     
     //MARK: - Properties
-    private var photoImageView: UIImageView
+    private var photoImageView: String
     private var nameLabel: String
+    private var overviewText: String
     
     var photo: UIImageView {
-        return photoImageView
+        let imageView = UIImageView()
+        imageView.sd_setImage(with: URL(string: photoImageView), completed: .none)
+        return imageView
     }
     
     var name: String {
         return nameLabel
     }
     
-    init(photoImageView: UIImageView, nameLabel: String) {
+    var overview: String {
+        return overviewText
+    }
+    
+    init(photoImageView: String, nameLabel: String, overview: String) {
         self.photoImageView = photoImageView
         self.nameLabel = nameLabel
+        self.overviewText = overview
     }
 }

@@ -20,27 +20,38 @@
                         <rect key="frame" x="20" y="6.5" width="90" height="90"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="JGu-tl-hAs"/>
-                            <constraint firstAttribute="height" constant="90" id="ShL-z3-qjh"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIU-nw-gra">
-                        <rect key="frame" x="120" y="41" width="239" height="21"/>
+                        <rect key="frame" x="120" y="10" width="239" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-oF-CU7">
+                        <rect key="frame" x="120" y="39" width="239" height="58"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="OIU-nw-gra" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="41" id="9tD-Pl-dUr"/>
+                    <constraint firstItem="cGV-dJ-8Nu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6.5" id="2Bo-iM-DzU"/>
+                    <constraint firstItem="OIU-nw-gra" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="9tD-Pl-dUr"/>
                     <constraint firstItem="cGV-dJ-8Nu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Cks-yb-XFI"/>
+                    <constraint firstItem="Eh4-oF-CU7" firstAttribute="leading" secondItem="cGV-dJ-8Nu" secondAttribute="trailing" constant="10" id="JVl-6b-5x4"/>
+                    <constraint firstAttribute="bottom" secondItem="Eh4-oF-CU7" secondAttribute="bottom" constant="6" id="Ze6-SZ-o3e"/>
                     <constraint firstAttribute="trailing" secondItem="OIU-nw-gra" secondAttribute="trailing" constant="20" symbolic="YES" id="ZsS-Al-tdv"/>
                     <constraint firstItem="cGV-dJ-8Nu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="emY-7q-ebn"/>
                     <constraint firstItem="OIU-nw-gra" firstAttribute="leading" secondItem="cGV-dJ-8Nu" secondAttribute="trailing" constant="10" id="wXn-BG-ZCK"/>
+                    <constraint firstAttribute="trailing" secondItem="Eh4-oF-CU7" secondAttribute="trailing" constant="20" symbolic="YES" id="woC-x7-73t"/>
+                    <constraint firstItem="Eh4-oF-CU7" firstAttribute="top" secondItem="OIU-nw-gra" secondAttribute="bottom" constant="8" symbolic="YES" id="yVI-ME-wzX"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameLabel" destination="OIU-nw-gra" id="7d4-1G-R0F"/>
+                <outlet property="overviewLabel" destination="Eh4-oF-CU7" id="Jhc-Qs-0ho"/>
                 <outlet property="photoImageView" destination="cGV-dJ-8Nu" id="VaU-Yd-yQy"/>
             </connections>
             <point key="canvasLocation" x="180.43478260869566" y="114.84375"/>
