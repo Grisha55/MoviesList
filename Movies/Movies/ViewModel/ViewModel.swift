@@ -23,14 +23,28 @@ class ViewModel: NSObject {
     
     var movies = [NSManagedObject]()
     
-    func getMoviesFromCD() {
-        networkingService = NetworkingService()
+    func getMoviesFromCD(tableView: UITableView) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
         dataStore = DataStore()
-        networkingService.fetchData()
-        if movies.count == 0 {
-            movies = dataStore.fetchMovies()
-        } else {
-            networkingService.fetchData()
+        networkingService = NetworkingService()
+        do {
+            let moviesBase = try context.fetch(fetchRequest)
+            if moviesBase.count == 0 {
+                networkingService.fetchData(tableView: tableView)
+                movies = dataStore.fetchMovies()
+            } else {
+                if movies == moviesBase {
+                    
+                } else {
+                    movies.removeAll()
+                    movies = dataStore.fetchMovies()
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
     

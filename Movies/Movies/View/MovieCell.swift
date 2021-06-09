@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 class MovieCell: UITableViewCell {
-
+    
     let urlForImage = "https://image.tmdb.org/t/p/w300"
     
     //MARK: - Properties
@@ -24,9 +24,10 @@ class MovieCell: UITableViewCell {
             overviewLabel.text = viewModel.overview
             
             let imageView = UIImageView()
-            imageView.sd_setImage(with: URL(string: urlForImage + viewModel.photoString), placeholderImage: UIImage(systemName: "person.3"))
             
-            photoImageView.image = imageView.image
+            imageView.sd_setImage(with: URL(string: viewModel.photoString), placeholderImage: UIImage(systemName: "person.3"))
+            self.photoImageView.image = imageView.image
+            
         }
     }
     
