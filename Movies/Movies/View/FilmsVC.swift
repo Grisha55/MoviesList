@@ -43,7 +43,6 @@ class FilmsVC: UIViewController {
     }
 
     @IBAction func buttonExitAction(_ sender: Any) {
-        DataStore().exitAction()
         Alerts().showExitAlert(title: "Exit", massage: "", titleForFirstAction: "Yes", titleForSecondAction: "Cancel", controller: self)
     }
 }

@@ -42,7 +42,7 @@ class FavoriteViewModel {
     func heightForRowAt() -> CGFloat {
         return 150.0
     }
-    // TODO: Перенести этот метод в FirebaseStore
+    
     // Load data from Firebase
     func loadDataFromFirebase(tableView: UITableView) {
         
