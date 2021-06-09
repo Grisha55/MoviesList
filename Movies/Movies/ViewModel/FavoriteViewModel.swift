@@ -28,9 +28,7 @@ class FavoriteViewModel {
         
         let movie = movies[indexPath.row]
         guard let photoURL = movie.photo else { return nil }
-        guard let url = URL(string: "\(urlForImage)\(photoURL)") else { return nil }
-        guard let data = try? Data(contentsOf: url) else { return nil }
-        return FavoriteCellViewModel(photoImageView: UIImageView(image: UIImage(data: data)), nameLabel: movie.title ?? "N/A")
+        return FavoriteCellViewModel(photoImageView: urlForImage + photoURL, nameLabel: movie.title ?? "N/A", overview: movie.overview ?? "Not found")
     }
     
     func numberOfRows() -> Int {
