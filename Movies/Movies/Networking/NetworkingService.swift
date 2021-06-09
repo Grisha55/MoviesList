@@ -13,7 +13,7 @@ class NetworkingService: NSObject {
     let urlForImage = "https://image.tmdb.org/t/p/w300"
     
     //MARK: - Get movies
-    func fetchData() {
+    func fetchData(tableView: UITableView) {
         
         // https://api.themoviedb.org/3/movie/550?api_key=6fc493937e1259d088b4ba87dc174e57
         
@@ -46,8 +46,9 @@ class NetworkingService: NSObject {
                 let moviesList = movies.results
                 moviesList.forEach { [weak self] movie in
                    
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [weak self] in
                         DataStore().saveData(name: movie.originalTitle, overview: movie.overview, photoURL: self!.urlForImage + movie.posterPath)
+                        tableView.reloadData()
                     } 
                 }
             } catch {

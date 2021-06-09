@@ -10,7 +10,7 @@ import UIKit
 class FilmsVC: UIViewController {
 
     private var viewModel: ViewModel?
-    private var networkingService = NetworkingService()
+    private var networkingService: NetworkingService?
     
     //MARK: - Constants
     let toDetailVC = "toDetailVC"
@@ -21,17 +21,18 @@ class FilmsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = ViewModel()
         settingsTableView()
+        
+        viewModel?.getMoviesFromCD(tableView: tableView)
     }
     
     // Setup tableView
     private func settingsTableView() {
         
-        viewModel = ViewModel()
         tableView.delegate = self
         tableView.dataSource = self
         viewModel?.registerCell(tableView: tableView)
-        viewModel?.getMoviesFromCD()
     }
     
     // Transition
