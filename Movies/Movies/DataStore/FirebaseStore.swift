@@ -24,25 +24,4 @@ class FirebaseStore {
         ])
     }
     
-    // Load data from Firebase
-    func loadDataFromFirebase() -> [MovieDatabase] {
-        
-        guard let user = Auth.auth().currentUser else { return [] }
-        
-        let refMovies = Database.database().reference(withPath: "users").child(user.uid).child("favourites")
-        
-        var _movies = Array<MovieDatabase>()
-        
-        refMovies.observe(.value) { snapshot in
-        
-            for movie in snapshot.children {
-                
-                let movie = MovieDatabase(snapshot: movie as! DataSnapshot)
-                
-                _movies.append(movie)
-            }
-        }
-        return _movies
-    }
-    
 }
