@@ -9,7 +9,7 @@ import UIKit
 
 class Alerts {
     
-    func showExitAlert(title: String, massage: String,titleForFirstAction: String, titleForSecondAction: String, controller: UIViewController) {
+    func showExitAlert(title: String, massage: String, titleForFirstAction: String, titleForSecondAction: String, controller: UIViewController) {
         let alertVC = UIAlertController(title: title, message: massage, preferredStyle: .alert)
         let alertActionOne = UIAlertAction(title: titleForFirstAction, style: .default) { _ in
             FirebaseStore().exitAction()
