@@ -10,6 +10,31 @@ import Firebase
 
 class FirebaseStore {
     
+    // User authorization
+    func existUser(name: String, email: String, password: String, controller: UIViewController) {
+        DatabaseManager.shared.userExists(name: name, email: email, password: password) { exist in
+            
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                
+                guard authResult != nil, error == nil else {
+                    return
+                }
+                controller.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // Sign In with email and password
+    func signInWith(email: String, password: String, controller: UIViewController, message: String) {
+        Firebase.Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            guard authResult != nil, error == nil else {
+                Alerts().showRegistrationAlert(controller: controller, message: message)
+                return
+            }
+            controller.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     // Load data to Firebase
     func loadDataToFirestore(name: String, overview: String, photoImageViewImage: String) {
         let db = Database.database().reference()
@@ -24,4 +49,12 @@ class FirebaseStore {
         ])
     }
     
+    // Exit from Firebase
+    func exitAction() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

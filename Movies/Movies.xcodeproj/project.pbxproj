@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE0B3AAD2672346E00B2A143 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0B3AAC2672346E00B2A143 /* Transitions.swift */; };
 		BE2106902669536900A9B1A5 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE21068E2669536900A9B1A5 /* FavoriteCell.swift */; };
 		BE2106912669536900A9B1A5 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE21068F2669536900A9B1A5 /* FavoriteCell.xib */; };
 		BE210693266953D900A9B1A5 /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE210692266953D900A9B1A5 /* FavoriteCellViewModel.swift */; };
@@ -43,6 +44,7 @@
 		5ABD609BBE53CB46EC327305 /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
 		75A9B10247D5870EEC9981A8 /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		9E19AFC46A4F1F8E967C536C /* Pods_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE0B3AAC2672346E00B2A143 /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		BE21068E2669536900A9B1A5 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		BE21068F2669536900A9B1A5 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		BE210692266953D900A9B1A5 /* FavoriteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellViewModel.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BE0B3AAB2672345900B2A143 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				BE0B3AAC2672346E00B2A143 /* Transitions.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
 		BE78AC2E2669ED6E0015FD1C /* Xib files */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 		BE80A6BB2667CAB900BE609D /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				BE0B3AAB2672345900B2A143 /* Transitions */,
 				BEBFBD56266FE205009097F1 /* Warnings */,
 				BE80A6E5266802C800BE609D /* View */,
 				BE80A6DE2667E85600BE609D /* ViewModel */,
@@ -367,6 +378,7 @@
 				BE80A6DA2667D3DE00BE609D /* NetworkingService.swift in Sources */,
 				BE78AC30266A53F80015FD1C /* RegistrationVC.swift in Sources */,
 				BE80A6E42667F15E00BE609D /* DetailViewModel.swift in Sources */,
+				BE0B3AAD2672346E00B2A143 /* Transitions.swift in Sources */,
 				BE2106902669536900A9B1A5 /* FavoriteCell.swift in Sources */,
 				BEC4680F26689B14001E9C6A /* FavoriteVC.swift in Sources */,
 				BEBFBD58266FE215009097F1 /* Alerts.swift in Sources */,

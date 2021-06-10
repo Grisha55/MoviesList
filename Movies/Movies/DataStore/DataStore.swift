@@ -42,13 +42,4 @@ class DataStore {
             return [NSManagedObject]()
         }
     }
-    
-    // Exit from movie app
-    func exitAction() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
 }
