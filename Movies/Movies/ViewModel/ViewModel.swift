@@ -57,9 +57,7 @@ class ViewModel: NSObject {
         
         let movie = movies[indexPath.row]
         
-        let photoPath = movie.value(forKey: "photo") as! String
-        
-        return MovieCellViewModel(title: movie.value(forKey: "title") as! String, overview: movie.value(forKey: "overview") as! String, photoString: urlForImage + photoPath)
+        return MovieCellViewModel(title: movie.value(forKey: "title") as! String, overview: movie.value(forKey: "overview") as! String, photoString: movie.value(forKey: "photo") as! String)
     }
     
     //MARK: - for TableViewDelegate

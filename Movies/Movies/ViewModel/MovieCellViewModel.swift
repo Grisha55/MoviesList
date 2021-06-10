@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class MovieCellViewModel {
     
@@ -34,18 +35,13 @@ class MovieCellViewModel {
     }
     //MARK: - Methods
     func likeAction() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        guard let entity = NSEntityDescription.entity(forEntityName: "Movie", in: context) else { return }
-        let movie = NSManagedObject(entity: entity, insertInto: context)
-        movie.setValue(title, forKey: "name")
-        movie.setValue(overview, forKey: "overview")
-        movie.setValue(photoString, forKey: "photo")
-        do {
-            try context.save()
-            print("Данные сохранены")
-        } catch {
-            print(error.localizedDescription)
+        Auth.auth().addStateDidChangeListener { [weak self] auth, user in
+            guard let self = self else { return }
+            if user != nil {
+                FirebaseStore().loadDataToFirestore(name: self.title, overview: self.overview, photoImageViewImage: self.photoData)
+            } else {
+                return
+            }
         }
     }
 }
