@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import Firebase
+import SDWebImage
 
 class DetailViewModel {
     
@@ -28,9 +29,10 @@ class DetailViewModel {
     }
     
     var photoImageView: UIImageView {
-        guard let url = URL(string: urlForImage + imageViewImage) else { return UIImageView() }
-        guard let data = try? Data(contentsOf: url) else { return UIImageView() }
-        return UIImageView(image: UIImage(data: data))
+        let imageView = UIImageView()
+        guard let url = URL(string: imageViewImage) else { return UIImageView() }
+        imageView.sd_setImage(with: url, completed: .none)
+        return imageView
     }
     
     init(name: String, overview: String, photo: String) {
