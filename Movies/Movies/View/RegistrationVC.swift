@@ -67,16 +67,16 @@ extension RegistrationVC: UITextFieldDelegate {
             
             guard !name.isEmpty, !password.isEmpty, !email.isEmpty else {
                 
-                registrationViewModel?.showAlert(controller: self, message: "You shoul enter all the fields")
+                Alerts().showRegistrationAlert(controller: self, message: "You shoul enter all the fields")
                 
                 return false
             }
             
-            registrationViewModel?.existUser(name: name, email: email, password: password, controller: self)
+            FirebaseStore().existUser(name: name, email: email, password: password, controller: self)
             
         // If user have already registrated yet
         } else {
-            registrationViewModel?.signInWith(email: email, password: password, controller: self, message: "Please enter all the fields")
+            FirebaseStore().signInWith(email: email, password: password, controller: self, message: "Please enter all the fields")
         }
         return true
     }

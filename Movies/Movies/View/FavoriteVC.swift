@@ -17,18 +17,15 @@ class FavoriteVC: UIViewController {
     
     var favoriteViewModel: FavoriteViewModel?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadAllData()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        favoriteViewModel?.loadDataFromFirebase(tableView: tableView)
     }
     
-    func loadAllData() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupTableView()
-        favoriteViewModel = FavoriteViewModel()
-        favoriteViewModel?.loadDataFromFirebase(tableView: tableView)
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-        }
     }
     
     // Setup tableView

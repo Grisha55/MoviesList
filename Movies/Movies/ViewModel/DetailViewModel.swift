@@ -38,26 +38,19 @@ class DetailViewModel {
         self.overviewText = overview
         self.imageViewImage = photo
     }
-    //TODO: Перенести этот метод в отдельный класс
-    // MARK: - Transition
-    func showModalAuth(controller: UIViewController?) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let new = storyboard.instantiateViewController(withIdentifier: "RegistrationVC") as! RegistrationVC
-        guard let controller = controller else { return }
-        controller.present(new, animated: true, completion: nil)
-    }
+    
     //TODO: Попробовать перенести этот метод в FirebaseStore
     func saveToUserToFB(controller: UIViewController) {
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             if user == nil {
-                self?.showModalAuth(controller: controller)
+                Transitions().showModalAuth(controller: controller)
             } else {
                 FirebaseStore().loadDataToFirestore(name: self?.name ?? "N/A", overview: self?.overview ?? "N/A", photoImageViewImage: self?.imageViewImage ?? "")
             }
         }
     }
 }
-//MARK: Movie
+// Movie
 struct MovieDatabase {
     var title: String?
     var overview: String?
