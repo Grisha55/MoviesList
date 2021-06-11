@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FilmsVC: UIViewController {
 
@@ -84,6 +85,19 @@ extension FilmsVC: UITableViewDataSource {
         
         cell.viewModel = cellViewModel
         
+        cell.delegate = self
+        
         return cell
     }
 }
+
+extension FilmsVC: MovieCellDelegate {
+    
+    func commitAction() {
+        
+        viewModel?.commitAction(controller: self)
+            
+    }
+}
+
+
