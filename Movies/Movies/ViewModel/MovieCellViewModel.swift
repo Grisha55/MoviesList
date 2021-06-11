@@ -33,15 +33,8 @@ class MovieCellViewModel {
         self.overviewString = overview
         self.photoData = photoString
     }
-    //MARK: - Methods
-    func likeAction() {
-        Auth.auth().addStateDidChangeListener { [weak self] auth, user in
-            guard let self = self else { return }
-            if user != nil {
-                FirebaseStore().loadDataToFirestore(name: self.title, overview: self.overview, photoImageViewImage: self.photoData)
-            } else {
-                return
-            }
-        }
+    
+    func addFB() {
+        FirebaseStore().loadDataToFirestore(name: title, overview: overview, photoImageViewImage: photoData)
     }
 }

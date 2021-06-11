@@ -7,6 +7,11 @@
 
 import UIKit
 import SDWebImage
+import Firebase
+
+protocol MovieCellDelegate {
+    func commitAction()
+}
 
 class MovieCell: UITableViewCell {
     
@@ -16,6 +21,7 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet var photoImageView: UIImageView!
+    var delegate: MovieCellDelegate?
     
     var viewModel: MovieCellViewModel? {
         willSet(viewModel) {
@@ -32,7 +38,13 @@ class MovieCell: UITableViewCell {
     }
     
     @IBAction func buttonLikeAction(_ sender: UIButton) {
-        guard let viewModel = viewModel else { return }
-        viewModel.likeAction()
+        
+        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+            if user == nil {
+                self?.delegate?.commitAction()
+            } else {
+                self?.viewModel?.addFB()
+            }
+        }
     }
 }
