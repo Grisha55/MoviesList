@@ -34,7 +34,8 @@ class FavoriteVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         favoriteViewModel?.registerCell(tableView: tableView)
-        
+        favoriteViewModel?.loadDataFromFirebase(tableView: tableView)
+        tableView.reloadData()
     }
 }
 
@@ -43,6 +44,10 @@ extension FavoriteVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let favoriteViewModel = favoriteViewModel else { return 0 }
         return favoriteViewModel.heightForRowAt()
+    }
+    // Delete the movie
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        favoriteViewModel?.commitEditingStyle(style: .delete, indexPath: indexPath, tableView: tableView)
     }
 }
 

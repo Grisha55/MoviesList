@@ -40,11 +40,29 @@ class FavoriteViewModel {
     func heightForRowAt() -> CGFloat {
         return 150.0
     }
+    // Delete the movie from firebase and from array
+    func commitEditingStyle(style: UITableViewCell.EditingStyle, indexPath: IndexPath, tableView: UITableView) {
+        if style == .delete {
+            guard let user = Auth.auth().currentUser else { return }
+            guard let title = movies[indexPath.row].title else { return }
+            Database.database().reference().child("users").child(user.uid).child("favourites").child(title).removeValue { error, ref in
+                if error != nil {
+                    print(error as Any)
+                }
+            }
+            movies.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
     
     // Load data from Firebase
     func loadDataFromFirebase(tableView: UITableView) {
         
-        guard let user = Auth.auth().currentUser else { return }
+        guard let user = Auth.auth().currentUser else {
+            movies.removeAll()
+            tableView.reloadData()
+            return
+        }
         
         let refMovies = Database.database().reference(withPath: "users").child(user.uid).child("favourites")
         

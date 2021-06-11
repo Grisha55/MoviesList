@@ -47,8 +47,8 @@ class DetailViewModel {
             if user == nil {
                 Transitions().showModalAuth(controller: controller)
             } else {
-                FirebaseStore().loadDataToFirestore(name: self?.name ?? "N/A", overview: self?.overview ?? "N/A", photoImageViewImage: self?.imageViewImage ?? "")
-            }
+                FirebaseStore().loadDataToFirestore(name: self?.nameString ?? "N/A", overview: self?.overview ?? "N/A", photoImageViewImage: self?.imageViewImage ?? "")
+            } 
         }
     }
 }
