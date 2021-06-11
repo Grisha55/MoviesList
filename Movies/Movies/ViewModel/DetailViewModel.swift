@@ -41,13 +41,27 @@ class DetailViewModel {
         self.imageViewImage = photo
     }
     
-    //TODO: Попробовать перенести этот метод в FirebaseStore
     func saveToUserToFB(controller: UIViewController) {
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             if user == nil {
                 Transitions().showModalAuth(controller: controller)
             } else {
-                FirebaseStore().loadDataToFirestore(name: self?.nameString ?? "N/A", overview: self?.overview ?? "N/A", photoImageViewImage: self?.imageViewImage ?? "")
+                
+                let ref = Database.database().reference()
+
+                guard let user = Auth.auth().currentUser else { return }
+                
+                ref.child("users").child(user.uid).child("favourites").observeSingleEvent(of: .value, with: { (snapshot) in
+
+                    if snapshot.hasChild(self?.name ?? "") {
+
+                        Alerts().showCopyFilmAlert(controller: controller)
+
+                        }else{
+
+                            FirebaseStore().loadDataToFirestore(name: self?.nameString ?? "N/A", overview: self?.overview ?? "N/A", photoImageViewImage: self?.imageViewImage ?? "")
+                        }
+                    })
             } 
         }
     }
