@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class FavoriteCellViewModel {
     
@@ -17,7 +16,7 @@ class FavoriteCellViewModel {
     
     var photo: UIImageView {
         let imageView = UIImageView()
-        imageView.sd_setImage(with: URL(string: photoImageView), completed: .none)
+        imageView.load(imageFrom: photoImageView)
         return imageView
     }
     

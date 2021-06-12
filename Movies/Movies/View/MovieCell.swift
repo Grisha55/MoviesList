@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 import Firebase
 
 protocol MovieCellDelegate {
@@ -29,11 +28,7 @@ class MovieCell: UITableViewCell {
             titleLabel.text = viewModel.title
             overviewLabel.text = viewModel.overview
             
-            let imageView = UIImageView()
-            
-            imageView.sd_setImage(with: URL(string: viewModel.photoString), placeholderImage: UIImage(systemName: "person.3"))
-            self.photoImageView.image = imageView.image
-            
+            self.photoImageView.load(imageFrom: viewModel.photoString.trimmingCharacters(in: .whitespaces))
         }
     }
     

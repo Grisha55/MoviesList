@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class FilmsVC: UIViewController {
 
