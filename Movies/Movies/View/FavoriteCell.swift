@@ -20,6 +20,9 @@ class FavoriteCell: UITableViewCell {
             photoImageView.image = viewModel.photo.image
             nameLabel.text = viewModel.name
             overviewLabel.text = viewModel.overview
+            photoImageView.layer.cornerRadius = 41.5
+            photoImageView.layer.borderWidth = 5
+            photoImageView.layer.borderColor = UIColor.black.cgColor
         }
     }
 }
