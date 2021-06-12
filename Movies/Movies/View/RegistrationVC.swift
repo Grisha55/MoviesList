@@ -40,7 +40,15 @@ class RegistrationVC: UIViewController {
         
         registrationViewModel = RegistrationViewModel()
         setDelegates()
+        setupTextfields()
     }
+    
+    func setupTextfields() {
+        nameTF.attributedPlaceholder = NSAttributedString(string: "Enter your Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        emailTF.attributedPlaceholder = NSAttributedString(string: "Enter your Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        passwordTF.attributedPlaceholder = NSAttributedString(string: "Enter your Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+    }
+    
     // Make textField delegates
     func setDelegates() {
         nameTF.delegate = self

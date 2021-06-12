@@ -21,6 +21,13 @@ class DetailVC: UIViewController {
         super.viewWillAppear(animated)
         
         setupProperties()
+        setupPhotoImageView()
+    }
+    
+    func setupPhotoImageView() {
+        photoImageView.layer.cornerRadius = 30
+        photoImageView.layer.borderWidth = 5
+        photoImageView.layer.borderColor = UIColor.black.cgColor
     }
     
     // Setup properties

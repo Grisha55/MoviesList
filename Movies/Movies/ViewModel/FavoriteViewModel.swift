@@ -38,7 +38,7 @@ class FavoriteViewModel {
     
     //MARK: - UITableViewDelegate
     func heightForRowAt() -> CGFloat {
-        return 150.0
+        return 110.0
     }
     // Delete the movie from firebase and from array
     func commitEditingStyle(style: UITableViewCell.EditingStyle, indexPath: IndexPath, tableView: UITableView) {
