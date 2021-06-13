@@ -24,7 +24,6 @@ class FilmsVC: UIViewController {
         super.viewWillAppear(animated)
         
         viewModel?.getMoviesFromCD(tableView: tableView)
-        tableView.reloadData()
     }
     
     override func viewDidLoad() {
