@@ -33,14 +33,18 @@ class ViewModel: NSObject {
         do {
             let moviesBase = try context.fetch(fetchRequest)
             if moviesBase.count == 0 {
-                networkingService.fetchData(tableView: tableView)
+                for page in 1...100 {
+                    networkingService.fetchData(tableView: tableView, page: page)
+                }
                 movies = dataStore.fetchMovies()
+                tableView.reloadData()
             } else {
                 if movies == moviesBase {
-                    
+                    tableView.reloadData()
                 } else {
                     movies.removeAll()
                     movies = dataStore.fetchMovies()
+                    tableView.reloadData()
                 }
             }
         } catch {

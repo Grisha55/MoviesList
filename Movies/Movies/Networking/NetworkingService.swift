@@ -12,8 +12,8 @@ class NetworkingService: NSObject {
     
     let urlForImage = "https://image.tmdb.org/t/p/w300"
     
-    //MARK: - Get movies
-    func fetchData(tableView: UITableView) {
+    // Get movies from page 1
+    func fetchData(tableView: UITableView, page: Int) {
         
         // https://api.themoviedb.org/3/movie/550?api_key=6fc493937e1259d088b4ba87dc174e57
         
@@ -24,7 +24,8 @@ class NetworkingService: NSObject {
         constructor.host = "api.themoviedb.org"
         constructor.path =  "/3/movie/top_rated"
         constructor.queryItems = [
-            URLQueryItem(name: "api_key", value: "6fc493937e1259d088b4ba87dc174e57")
+            URLQueryItem(name: "api_key", value: "6fc493937e1259d088b4ba87dc174e57"),
+            URLQueryItem(name: "page", value: String(page))
         ]
         
         guard let url = constructor.url else { return }
@@ -47,7 +48,8 @@ class NetworkingService: NSObject {
                 moviesList.forEach { [weak self] movie in
                    
                     DispatchQueue.main.async { [weak self] in
-                        DataStore().saveData(name: movie.originalTitle, overview: movie.overview, photoURL: self!.urlForImage + movie.posterPath)
+                        guard let self = self else { return }
+                        DataStore().saveData(name: movie.originalTitle, overview: movie.overview, photoURL: self.urlForImage + movie.posterPath)
                         tableView.reloadData()
                     } 
                 }

@@ -10,13 +10,13 @@ import UIKit
 class FavoriteCellViewModel {
     
     //MARK: - Properties
-    private var photoImageView: String
+    private var photoString: String
     private var nameLabel: String
     private var overviewText: String
     
     var photo: UIImageView {
         let imageView = UIImageView()
-        imageView.load(imageFrom: photoImageView)
+        imageView.load(imageFrom: photoString)
         return imageView
     }
     
@@ -29,7 +29,7 @@ class FavoriteCellViewModel {
     }
     
     init(photoImageView: String, nameLabel: String, overview: String) {
-        self.photoImageView = photoImageView
+        self.photoString = photoImageView
         self.nameLabel = nameLabel
         self.overviewText = overview
     }
