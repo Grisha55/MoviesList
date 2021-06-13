@@ -59,4 +59,42 @@ class NetworkingService: NSObject {
         }
         task.resume()
     }
+    
+    func fetchFilteredData(tableView: UITableView, page: Int, query: String, completion: @escaping ([Results]) -> Void) {
+        let configuration = URLSessionConfiguration.default
+        let session = URLSession(configuration: configuration)
+        var constructor = URLComponents()
+        constructor.scheme = "https"
+        constructor.host = "api.themoviedb.org"
+        constructor.path =  "/3/search/movie"
+        constructor.queryItems = [
+            URLQueryItem(name: "api_key", value: "6fc493937e1259d088b4ba87dc174e57"),
+            URLQueryItem(name: "page", value: String(page)),
+            URLQueryItem(name: "query", value: query)
+        ]
+        
+        guard let url = constructor.url else { return }
+        let request = URLRequest(url: url)
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            guard let data = data else {
+                print(error!)
+                return
+            }
+            
+            do {
+                let movies = try JSONDecoder().decode(NetworkingMovies.self, from: data)
+                let moviesList = movies.results
+                completion(moviesList)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
 }
