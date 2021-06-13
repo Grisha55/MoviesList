@@ -10,8 +10,6 @@ import Firebase
 
 class RegistrationVC: UIViewController {
     
-    var registrationViewModel: RegistrationViewModel?
-    
     //MARK: - Properties
     var signup: Bool = true {
         willSet {
@@ -38,11 +36,10 @@ class RegistrationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registrationViewModel = RegistrationViewModel()
         setDelegates()
         setupTextfields()
     }
-    
+    //Setup textFields
     func setupTextfields() {
         nameTF.attributedPlaceholder = NSAttributedString(string: "Enter your Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         emailTF.attributedPlaceholder = NSAttributedString(string: "Enter your Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])

@@ -39,6 +39,7 @@ class DetailViewModel {
         self.imageViewImage = photo
     }
     
+    //Save data to user in Firebase
     func saveToUserToFB(controller: UIViewController) {
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             if user == nil {

@@ -23,6 +23,7 @@ class ViewModel: NSObject {
     
     var movies = [NSManagedObject]()
     
+    //Get movies from CoreData
     func getMoviesFromCD(tableView: UITableView) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -52,6 +53,7 @@ class ViewModel: NSObject {
         }
     }
     
+    //Commit action
     func commitAction(controller: UIViewController) {
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
