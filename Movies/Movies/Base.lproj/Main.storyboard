@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjD-V2-T1M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3568.115942028986" y="424.55357142857139"/>
+            <point key="canvasLocation" x="1757" y="425"/>
         </scene>
         <!--Films-->
         <scene sceneID="2Kp-Kr-o0M">
@@ -269,8 +269,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="Ps6-ZZ-Rho" kind="relationship" relationship="viewControllers" id="HQn-al-uu2"/>
-                        <segue destination="q1I-D3-lzQ" kind="relationship" relationship="viewControllers" id="sry-eu-dSl"/>
                         <segue destination="UMb-8I-3sN" kind="relationship" relationship="viewControllers" id="Aox-dE-7bj"/>
+                        <segue destination="q1I-D3-lzQ" kind="relationship" relationship="viewControllers" id="PR4-oh-wmD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9r-PD-fPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

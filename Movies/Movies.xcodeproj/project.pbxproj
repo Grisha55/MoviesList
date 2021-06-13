@@ -15,7 +15,6 @@
 		BE78AC2C2669D2C00015FD1C /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78AC2A2669D2C00015FD1C /* Movie+CoreDataClass.swift */; };
 		BE78AC2D2669D2C00015FD1C /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78AC2B2669D2C00015FD1C /* Movie+CoreDataProperties.swift */; };
 		BE78AC30266A53F80015FD1C /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78AC2F266A53F80015FD1C /* RegistrationVC.swift */; };
-		BE78AC32266A541F0015FD1C /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78AC31266A541F0015FD1C /* RegistrationViewModel.swift */; };
 		BE78AC34266A57C00015FD1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE78AC33266A57C00015FD1C /* GoogleService-Info.plist */; };
 		BE80A6BD2667CAB900BE609D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6BC2667CAB900BE609D /* AppDelegate.swift */; };
 		BE80A6BF2667CAB900BE609D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE80A6BE2667CAB900BE609D /* SceneDelegate.swift */; };
@@ -55,7 +54,6 @@
 		BE78AC2A2669D2C00015FD1C /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BE78AC2B2669D2C00015FD1C /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BE78AC2F266A53F80015FD1C /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
-		BE78AC31266A541F0015FD1C /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		BE78AC33266A57C00015FD1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE80A6B92667CAB900BE609D /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE80A6BC2667CAB900BE609D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 				BE80A6EA26680BBC00BE609D /* MovieCellViewModel.swift */,
 				BEC4681026689B9F001E9C6A /* FavoriteViewModel.swift */,
 				BE210692266953D900A9B1A5 /* FavoriteCellViewModel.swift */,
-				BE78AC31266A541F0015FD1C /* RegistrationViewModel.swift */,
 				BEBD93C12676227D0010B5F8 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
@@ -380,7 +377,6 @@
 				BE80A6C12667CAB900BE609D /* FilmsVC.swift in Sources */,
 				BE80A6E02667E87900BE609D /* ViewModel.swift in Sources */,
 				BE80A6E8266802F700BE609D /* MovieCell.swift in Sources */,
-				BE78AC32266A541F0015FD1C /* RegistrationViewModel.swift in Sources */,
 				BED3E2D6266B532000895DC1 /* DatabaseManager.swift in Sources */,
 				BE3D278526752B4D0009714A /* ImageViewExtensions.swift in Sources */,
 				BEC4681126689B9F001E9C6A /* FavoriteViewModel.swift in Sources */,

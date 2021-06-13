@@ -24,6 +24,7 @@ class DetailVC: UIViewController {
         setupPhotoImageView()
     }
     
+    //Setup photoImageView
     func setupPhotoImageView() {
         photoImageView.layer.cornerRadius = 30
         photoImageView.layer.borderWidth = 5

@@ -11,6 +11,7 @@ import CoreData
 
 class FilmsVC: UIViewController {
 
+    //MARK: - Properties
     private var viewModel: ViewModel?
     private var networkingService: NetworkingService?
     
@@ -91,6 +92,7 @@ extension FilmsVC: UITableViewDataSource {
     }
 }
 
+//MARK: - MovieCellDelegate
 extension FilmsVC: MovieCellDelegate {
     
     func commitAction() {

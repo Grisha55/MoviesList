@@ -9,6 +9,7 @@ import UIKit
 
 class SearchVC: UIViewController {
 
+    //MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
     var searchViewModel: SearchViewModel?
     let searchController = UISearchController(searchResultsController: nil)
@@ -16,12 +17,18 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchViewModel = SearchViewModel()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "FavoriteCell", bundle: nil), forCellReuseIdentifier: "favoriteCell")
+        setupTableView()
         setupSearchController()
     }
     
+    //Setup tableView
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "FavoriteCell", bundle: nil), forCellReuseIdentifier: "favoriteCell")
+    }
+    
+    //Setup searchController
     func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -33,7 +40,7 @@ class SearchVC: UIViewController {
 
 }
 
-//MARK: UITableViewDelegate
+//MARK: - UITableViewDelegate
 extension SearchVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -42,6 +49,7 @@ extension SearchVC: UITableViewDelegate {
     }
 }
 
+//MARK: - UITableViewDataSource
 extension SearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let searchViewModel = searchViewModel else { return 0 }
