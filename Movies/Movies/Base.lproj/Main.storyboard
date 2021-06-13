@@ -45,7 +45,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="106"/>
+            <point key="canvasLocation" x="945" y="-425"/>
         </scene>
         <!--Description-->
         <scene sceneID="eXl-cW-2dd">
@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9o-Vw-Vgd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1717" y="106"/>
+            <point key="canvasLocation" x="1757" y="-425"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="ykp-BI-gou">
@@ -141,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VKd-B7-g62" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="946" y="761"/>
+            <point key="canvasLocation" x="945" y="1292"/>
         </scene>
         <!--RegistrationVC-->
         <scene sceneID="viz-sS-8uX">
@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjD-V2-T1M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2657.971014492754" y="424.55357142857139"/>
+            <point key="canvasLocation" x="3568.115942028986" y="424.55357142857139"/>
         </scene>
         <!--Films-->
         <scene sceneID="2Kp-Kr-o0M">
@@ -255,7 +255,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O6t-U0-F91" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="105.80357142857143"/>
+            <point key="canvasLocation" x="138" y="-425"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qYK-DQ-HGQ">
@@ -270,11 +270,43 @@
                     <connections>
                         <segue destination="Ps6-ZZ-Rho" kind="relationship" relationship="viewControllers" id="HQn-al-uu2"/>
                         <segue destination="q1I-D3-lzQ" kind="relationship" relationship="viewControllers" id="sry-eu-dSl"/>
+                        <segue destination="UMb-8I-3sN" kind="relationship" relationship="viewControllers" id="Aox-dE-7bj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9r-PD-fPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-793" y="425"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="sE0-n2-hwh">
+            <objects>
+                <viewController id="nGj-Ht-bWk" customClass="SearchVC" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J2r-cq-Ev1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8do-l7-LRh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.16467499729999999" green="0.20785969500000001" blue="0.29799818989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="v1R-qP-Tcy"/>
+                        <color key="backgroundColor" red="0.64707273239999996" green="0.1647173166" blue="0.16470932960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8do-l7-LRh" firstAttribute="top" secondItem="v1R-qP-Tcy" secondAttribute="top" id="NMv-SA-MiA"/>
+                            <constraint firstItem="v1R-qP-Tcy" firstAttribute="bottom" secondItem="8do-l7-LRh" secondAttribute="bottom" id="QpD-r1-a1A"/>
+                            <constraint firstItem="v1R-qP-Tcy" firstAttribute="trailing" secondItem="8do-l7-LRh" secondAttribute="trailing" id="gmf-K0-lBe"/>
+                            <constraint firstItem="8do-l7-LRh" firstAttribute="leading" secondItem="v1R-qP-Tcy" secondAttribute="leading" id="qp0-bd-F2F"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="tUK-fW-317"/>
+                    <connections>
+                        <outlet property="tableView" destination="8do-l7-LRh" id="7Xm-nf-c5j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1HL-VT-ZCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="425"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="nFf-3t-zEL">
@@ -296,11 +328,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kov-dL-zUj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="762"/>
+            <point key="canvasLocation" x="170" y="1293"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="WAS-yV-RCs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UMb-8I-3sN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="yE7-7Q-t57"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XhW-Cs-GbP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.64707273239999996" green="0.1647173166" blue="0.16470932960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nGj-Ht-bWk" kind="relationship" relationship="rootViewController" id="DFE-rq-SBH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIs-oT-gOy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="425"/>
         </scene>
     </scenes>
     <resources>
         <image name="film.fill" catalog="system" width="128" height="93"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="sparkles" catalog="system" width="112" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
