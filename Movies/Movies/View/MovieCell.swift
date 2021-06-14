@@ -28,7 +28,10 @@ class MovieCell: UITableViewCell {
             titleLabel.text = viewModel.title
             overviewLabel.text = viewModel.overview
             
-            self.photoImageView.load(imageFrom: viewModel.photoString.trimmingCharacters(in: .whitespaces))
+            DispatchQueue.main.async {
+                self.photoImageView.load(imageFrom: viewModel.photoString.trimmingCharacters(in: .whitespaces))
+            }
+            
         }
     }
     

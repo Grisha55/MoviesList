@@ -50,8 +50,7 @@ class NetworkingService: NSObject {
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         DataStore().saveData(name: movie.originalTitle, overview: movie.overview, photoURL: self.urlForImage + movie.posterPath)
-                        tableView.reloadData()
-                    } 
+                    }
                 }
             } catch {
                 print(error.localizedDescription)
@@ -90,7 +89,10 @@ class NetworkingService: NSObject {
             do {
                 let movies = try JSONDecoder().decode(NetworkingMovies.self, from: data)
                 let moviesList = movies.results
-                completion(moviesList)
+                
+                DispatchQueue.main.async {
+                    completion(moviesList)
+                }
             } catch {
                 print(error.localizedDescription)
             }

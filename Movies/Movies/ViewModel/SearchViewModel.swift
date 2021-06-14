@@ -10,6 +10,7 @@ import CoreData
 
 class SearchViewModel {
     
+    //MARK: - Properties
     let urlForImage = "https://image.tmdb.org/t/p/w300"
     
     var filteredMovies = [Results]()
@@ -38,8 +39,8 @@ class SearchViewModel {
     func loadDataToFilteredMovies(tableView: UITableView, query: String) {
         for page in 1...10 {
             NetworkingService().fetchFilteredData(tableView: tableView, page: page, query: query) { results in
-                DispatchQueue.main.async {
-                    self.filteredMovies = results
+                DispatchQueue.main.async { [weak self] in
+                    self?.filteredMovies = results
                     tableView.reloadData()
                 }
             }
