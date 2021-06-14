@@ -37,15 +37,21 @@ class ViewModel: NSObject {
                 for page in 1...100 {
                     networkingService.fetchData(tableView: tableView, page: page)
                 }
-                movies = dataStore.fetchMovies()
-                tableView.reloadData()
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.movies = self.dataStore.fetchMovies()
+                    tableView.reloadData()
+                }
             } else {
                 if movies == moviesBase {
                     tableView.reloadData()
                 } else {
-                    movies.removeAll()
-                    movies = dataStore.fetchMovies()
-                    tableView.reloadData()
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.movies.removeAll()
+                        self.movies = self.dataStore.fetchMovies()
+                        tableView.reloadData()
+                    }
                 }
             }
         } catch {
