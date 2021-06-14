@@ -46,6 +46,19 @@ class ViewModel: NSObject {
                 if movies == moviesBase {
                     tableView.reloadData()
                 } else {
+                    
+                    do {
+                        let oldValues = try context.fetch(fetchRequest)
+                        oldValues.forEach { context.delete($0) }
+                        try context.save()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                    
+                    for page in 1...100 {
+                        networkingService.fetchData(tableView: tableView, page: page)
+                    }
+                    
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         self.movies.removeAll()

@@ -24,7 +24,7 @@ class FilmsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel?.getMoviesFromCD(tableView: tableView)
+        
     }
     
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class FilmsVC: UIViewController {
         
         viewModel = ViewModel()
         settingsTableView()
+        viewModel?.getMoviesFromCD(tableView: tableView)
     }
     
     // Setup tableView
