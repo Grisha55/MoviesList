@@ -21,13 +21,17 @@ class FilmsVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel?.getMoviesFromCD(tableView: tableView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewModel = ViewModel()
         settingsTableView()
-        
-        self.viewModel?.getMoviesFromCD(tableView: self.tableView)
     }
     
     // Setup tableView
