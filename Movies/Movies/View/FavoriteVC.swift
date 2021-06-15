@@ -17,12 +17,6 @@ class FavoriteVC: UIViewController {
     
     var favoriteViewModel: FavoriteViewModel?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        favoriteViewModel?.loadDataFromFirebase(tableView: tableView)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
