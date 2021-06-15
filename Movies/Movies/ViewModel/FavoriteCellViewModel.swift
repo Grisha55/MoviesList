@@ -14,10 +14,8 @@ class FavoriteCellViewModel {
     private var nameLabel: String
     private var overviewText: String
     
-    var photo: UIImageView {
-        let imageView = UIImageView()
-        imageView.load(imageFrom: photoString)
-        return imageView
+    var photo: String {
+        return photoString
     }
     
     var name: String {
