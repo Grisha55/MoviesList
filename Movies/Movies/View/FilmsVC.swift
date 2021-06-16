@@ -32,7 +32,7 @@ class FilmsVC: UIViewController {
         
         viewModel = ViewModel()
         settingsTableView()
-        viewModel?.getMoviesFromCD(tableView: tableView)
+        viewModel?.getMoviesFromCD(tableView: tableView, controller: self)
     }
     
     // Setup tableView

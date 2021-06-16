@@ -24,7 +24,7 @@ class ViewModel: NSObject {
     var movies = [NSManagedObject]()
     
     //Get movies from CoreData
-    func getMoviesFromCD(tableView: UITableView) {
+    func getMoviesFromCD(tableView: UITableView, controller: UIViewController) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
@@ -34,14 +34,27 @@ class ViewModel: NSObject {
         do {
             let moviesBase = try context.fetch(fetchRequest)
             if moviesBase.count == 0 {
-                for page in 1...100 {
+                for page in 1...500 {
                     networkingService.fetchData(tableView: tableView, page: page)
                 }
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.movies = self.dataStore.fetchMovies()
-                    tableView.reloadData()
+                DispatchQueue.global(qos: .background).async {
+                    self.networkingService.fetchFirstData(tableView: tableView) { [weak self] movies in
+                        guard let self = self else { return }
+                        movies.forEach { movieResult in
+                            let movie = Movie(context: context)
+                            movie.setValue(movieResult.originalTitle, forKey: "title")
+                            movie.setValue(movieResult.overview, forKey: "overview")
+                            movie.setValue( self.urlForImage + movieResult.posterPath, forKey: "photo")
+                            self.movies.append(movie)
+                        }
+                        DispatchQueue.main.async {
+                            tableView.reloadData()
+                        }
+                    }
                 }
+                
+                Alerts().showExitAlert(title: "If you want more movies you shold close this app and open again", massage: "More movies will be here after it", titleForFirstAction: "Ok", titleForSecondAction: "Close", controller: controller)
+                
             } else {
                 if movies == moviesBase {
                     tableView.reloadData()
@@ -55,7 +68,7 @@ class ViewModel: NSObject {
                         print(error.localizedDescription)
                     }
                     
-                    for page in 1...100 {
+                    for page in 1...500 {
                         networkingService.fetchData(tableView: tableView, page: page)
                     }
                     
