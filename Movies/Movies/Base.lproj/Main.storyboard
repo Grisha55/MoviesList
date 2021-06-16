@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9o-Vw-Vgd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757" y="-425"/>
+            <point key="canvasLocation" x="1719" y="27"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="ykp-BI-gou">
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjD-V2-T1M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757" y="425"/>
+            <point key="canvasLocation" x="2632" y="425"/>
         </scene>
         <!--Films-->
         <scene sceneID="2Kp-Kr-o0M">
@@ -303,6 +303,7 @@
                     <navigationItem key="navigationItem" title="Search" id="tUK-fW-317"/>
                     <connections>
                         <outlet property="tableView" destination="8do-l7-LRh" id="7Xm-nf-c5j"/>
+                        <segue destination="Q1P-YJ-6FG" kind="show" identifier="toDescriptionFromSearch" id="4Aa-uG-JbE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1HL-VT-ZCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -352,6 +353,9 @@
             <point key="canvasLocation" x="138" y="425"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4Aa-uG-JbE"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="film.fill" catalog="system" width="128" height="93"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
