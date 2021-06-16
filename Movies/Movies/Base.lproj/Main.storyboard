@@ -41,7 +41,7 @@
                     <connections>
                         <outlet property="buttonExit" destination="k1v-DF-L2B" id="R0G-5t-Knj"/>
                         <outlet property="tableView" destination="HXM-Aw-7JL" id="NSU-95-B5p"/>
-                        <segue destination="Q1P-YJ-6FG" kind="show" identifier="toDetailVC" id="FDr-jd-LTp"/>
+                        <segue destination="Q1P-YJ-6FG" kind="show" identifier="toDetailVC" id="CuE-US-ONn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -57,7 +57,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="NJL-J3-9Up">
-                                <rect key="frame" x="20" y="88" width="374" height="759"/>
+                                <rect key="frame" x="20" y="108" width="374" height="739"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5j-uW-fjf">
                                         <rect key="frame" x="158.5" y="0.0" width="57" height="29"/>
@@ -72,7 +72,7 @@
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zxw-dc-idp">
-                                        <rect key="frame" x="0.0" y="357" width="374" height="402"/>
+                                        <rect key="frame" x="0.0" y="357" width="374" height="382"/>
                                         <color key="backgroundColor" red="0.031361360099999999" green="0.050991125399999997" blue="0.1686013341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -91,7 +91,7 @@
                         <constraints>
                             <constraint firstItem="NJL-J3-9Up" firstAttribute="leading" secondItem="7ke-ao-TGC" secondAttribute="leading" constant="20" id="6l1-w8-Pcu"/>
                             <constraint firstItem="7ke-ao-TGC" firstAttribute="trailing" secondItem="NJL-J3-9Up" secondAttribute="trailing" constant="20" id="ald-iO-hL6"/>
-                            <constraint firstItem="NJL-J3-9Up" firstAttribute="top" secondItem="7ke-ao-TGC" secondAttribute="top" id="sfd-1d-VF5"/>
+                            <constraint firstItem="NJL-J3-9Up" firstAttribute="top" secondItem="7ke-ao-TGC" secondAttribute="top" constant="20" id="sfd-1d-VF5"/>
                             <constraint firstItem="7ke-ao-TGC" firstAttribute="bottom" secondItem="NJL-J3-9Up" secondAttribute="bottom" constant="-34" id="txu-rU-Jv9"/>
                         </constraints>
                     </view>
@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9o-Vw-Vgd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1719" y="27"/>
+            <point key="canvasLocation" x="1713" y="35"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="ykp-BI-gou">
@@ -196,7 +196,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ft-OI-L6j">
                                         <rect key="frame" x="0.0" y="0.0" width="251" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdI-R3-vlm">
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjD-V2-T1M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2632" y="425"/>
+            <point key="canvasLocation" x="2481" y="35"/>
         </scene>
         <!--Films-->
         <scene sceneID="2Kp-Kr-o0M">
@@ -303,7 +303,7 @@
                     <navigationItem key="navigationItem" title="Search" id="tUK-fW-317"/>
                     <connections>
                         <outlet property="tableView" destination="8do-l7-LRh" id="7Xm-nf-c5j"/>
-                        <segue destination="Q1P-YJ-6FG" kind="show" identifier="toDescriptionFromSearch" id="4Aa-uG-JbE"/>
+                        <segue destination="Q1P-YJ-6FG" kind="show" identifier="toDescriptionFromSearch" id="bbu-jh-sO6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1HL-VT-ZCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -342,6 +342,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.64707273239999996" green="0.1647173166" blue="0.16470932960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.64707273239999996" green="0.1647173166" blue="0.16470932960000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -354,7 +355,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4Aa-uG-JbE"/>
+        <segue reference="bbu-jh-sO6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="film.fill" catalog="system" width="128" height="93"/>
