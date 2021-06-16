@@ -72,16 +72,6 @@ class ViewModel: NSObject {
         }
     }
     
-    //Commit action
-    func commitAction(controller: UIViewController) {
-        
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user == nil {
-                Alerts().showCommitAlert(controller: controller)
-            }
-        }
-    }
-    
     //MARK: - for TableViewDataSource
     func numberOfRows() -> Int {
         return movies.count

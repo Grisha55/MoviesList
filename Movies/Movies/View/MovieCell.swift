@@ -8,10 +8,6 @@
 import UIKit
 import Firebase
 
-protocol MovieCellDelegate {
-    func commitAction()
-}
-
 class MovieCell: UITableViewCell {
     
     let urlForImage = "https://image.tmdb.org/t/p/w300"
@@ -20,7 +16,6 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet var photoImageView: UIImageView!
-    var delegate: MovieCellDelegate?
     
     var viewModel: MovieCellViewModel? {
         willSet(viewModel) {
@@ -29,17 +24,6 @@ class MovieCell: UITableViewCell {
             overviewLabel.text = viewModel.overview
             
             photoImageView.load(imageFrom: viewModel.photoString)
-        }
-    }
-    
-    @IBAction func buttonLikeAction(_ sender: UIButton) {
-        
-        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-            if user == nil {
-                self?.delegate?.commitAction()
-            } else {
-                self?.viewModel?.addFB()
-            }
         }
     }
 }
