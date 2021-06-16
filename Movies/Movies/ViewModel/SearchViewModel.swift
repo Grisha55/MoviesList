@@ -12,8 +12,8 @@ class SearchViewModel {
     
     //MARK: - Properties
     let urlForImage = "https://image.tmdb.org/t/p/w300"
-    
     var filteredMovies = [Results]()
+    var selectedIndexPath: IndexPath?
     
     //MARK: - UITableViewDataSource
     func cellForRowAt(indexPath: IndexPath) -> FavoriteCellViewModel? {
@@ -28,6 +28,16 @@ class SearchViewModel {
     //MARK: - UITableViewDelegate
     func heightForRowAt() -> CGFloat {
         return 110.0
+    }
+    
+    func viewModelForSelectedRow() -> DetailViewModel? {
+        guard let selectedIndexPath = selectedIndexPath else { return nil }
+        let movie = filteredMovies[selectedIndexPath.row]
+        return DetailViewModel(name: movie.title, overview: movie.overview, photo: urlForImage + movie.posterPath)
+    }
+    
+    func selectedRowAt(_ indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
     }
     
     //MARK: - UISearchResultsUpdating

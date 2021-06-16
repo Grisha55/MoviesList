@@ -37,6 +37,12 @@ class SearchVC: UIViewController {
         definesPresentationContext = true
         searchController.searchBar.backgroundColor = UIColor.init(red: 165, green: 42, blue: 42, alpha: 0.0)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "toDescriptionFromSearch" else { return }
+        guard let detailVC = segue.destination as? DetailVC else { return }
+        detailVC.detailViewModel = searchViewModel?.viewModelForSelectedRow()
+    }
 
 }
 
@@ -46,6 +52,11 @@ extension SearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let searchViewModel = searchViewModel else { return 0 }
         return searchViewModel.heightForRowAt()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchViewModel?.selectedRowAt(indexPath)
+        performSegue(withIdentifier: "toDescriptionFromSearch", sender: self)
     }
 }
 
