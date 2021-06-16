@@ -20,6 +20,12 @@ class FilmsVC: UIViewController {
     let identifier = "movieCell"
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var buttonExit: UIBarButtonItem!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideExitButton()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +41,15 @@ class FilmsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         viewModel?.registerCell(tableView: tableView)
+        
+    }
+    // Hide buttonExit
+    func hideExitButton() {
+        if Auth.auth().currentUser == nil {
+            buttonExit.title = ""
+        } else {
+            buttonExit.title = "Exit"
+        }
     }
     
     // Transition
@@ -81,20 +96,6 @@ extension FilmsVC: UITableViewDataSource {
         
         cell.viewModel = cellViewModel
         
-        cell.delegate = self
-        
         return cell
     }
 }
-
-//MARK: - MovieCellDelegate
-extension FilmsVC: MovieCellDelegate {
-    
-    func commitAction() {
-        
-        viewModel?.commitAction(controller: self)
-            
-    }
-}
-
-

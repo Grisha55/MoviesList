@@ -34,8 +34,4 @@ class MovieCellViewModel {
         self.photoData = photoString
     }
     
-    // Load data to Firebase
-    func addFB() {
-        FirebaseStore().loadDataToFirestore(name: title, overview: overview, photoImageViewImage: photoData)
-    }
 }

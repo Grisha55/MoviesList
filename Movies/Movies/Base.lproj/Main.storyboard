@@ -39,6 +39,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonExit" destination="k1v-DF-L2B" id="R0G-5t-Knj"/>
                         <outlet property="tableView" destination="HXM-Aw-7JL" id="NSU-95-B5p"/>
                         <segue destination="Q1P-YJ-6FG" kind="show" identifier="toDetailVC" id="FDr-jd-LTp"/>
                     </connections>
