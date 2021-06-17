@@ -33,27 +33,29 @@ class ViewModel: NSObject {
         networkingService = NetworkingService()
         do {
             let moviesBase = try context.fetch(fetchRequest)
+            
             if moviesBase.count == 0 {
-                for page in 1...500 {
-                    networkingService.fetchData(tableView: tableView, page: page)
-                }
-                DispatchQueue.global(qos: .background).async {
-                    self.networkingService.fetchFirstData(tableView: tableView) { [weak self] movies in
-                        guard let self = self else { return }
-                        movies.forEach { movieResult in
-                            let movie = Movie(context: context)
-                            movie.setValue(movieResult.originalTitle, forKey: "title")
-                            movie.setValue(movieResult.overview, forKey: "overview")
-                            movie.setValue( self.urlForImage + movieResult.posterPath, forKey: "photo")
-                            self.movies.append(movie)
-                        }
-                        DispatchQueue.main.async {
-                            tableView.reloadData()
-                        }
+                DispatchQueue.global(qos: .background).async { [weak self] in
+                    for page in 1...500 {
+                        self?.networkingService.fetchData(tableView: tableView, page: page)
                     }
                 }
                 
-                Alerts().showExitAlert(title: "If you want more movies you shold close this app and open again", massage: "More movies will be here after it", titleForFirstAction: "Ok", titleForSecondAction: "Close", controller: controller)
+                self.networkingService.fetchFirstData(tableView: tableView) { [weak self] movies in
+                    guard let self = self else { return }
+                    movies.forEach { movieResult in
+                        let movie = Movie(context: context)
+                        movie.setValue(movieResult.originalTitle, forKey: "title")
+                        movie.setValue(movieResult.overview, forKey: "overview")
+                        movie.setValue( self.urlForImage + movieResult.posterPath, forKey: "photo")
+                        self.movies.append(movie)
+                    }
+                    DispatchQueue.main.async {
+                        tableView.reloadData()
+                    }
+                }
+                
+                Alerts().showExitAlert(title: "Please wait for about 15 sec", massage: "Movies will be here after that", titleForFirstAction: "Ok", titleForSecondAction: "Close", controller: controller)
                 
             } else {
                 if movies == moviesBase {
