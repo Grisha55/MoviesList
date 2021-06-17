@@ -13,7 +13,14 @@ class FirebaseStore {
     // User authorization
     func existUser(name: String, email: String, password: String, controller: UIViewController) {
         DatabaseManager.shared.userExists(name: name, email: email, password: password) { exist in
-            
+            Auth.auth().fetchSignInMethods(forEmail: email) { providers, error in
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                }
+                if providers != nil {
+                    Alerts().showRegistrationAlert(controller: controller, message: "This email have already veryfide")
+                }
+            }
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 
                 guard authResult != nil, error == nil else {

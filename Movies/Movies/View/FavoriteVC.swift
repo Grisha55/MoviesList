@@ -17,8 +17,8 @@ class FavoriteVC: UIViewController {
     
     var favoriteViewModel: FavoriteViewModel?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupTableView()
     }
     
