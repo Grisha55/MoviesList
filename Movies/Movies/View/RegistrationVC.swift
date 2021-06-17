@@ -81,7 +81,7 @@ extension RegistrationVC: UITextFieldDelegate {
             
         // If user have already registrated yet
         } else {
-            FirebaseStore().signInWith(email: email, password: password, controller: self, message: "Please enter all the fields")
+            FirebaseStore().signInWith(email: email, password: password, controller: self, message: "Email or Password is wrong")
         }
         return true
     }
