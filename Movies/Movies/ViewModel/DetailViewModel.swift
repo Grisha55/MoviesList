@@ -51,8 +51,14 @@ class DetailViewModel {
                 guard let user = Auth.auth().currentUser else { return }
                 
                 ref.child("users").child(user.uid).child("favourites").observeSingleEvent(of: .value, with: { (snapshot) in
-
-                    if snapshot.hasChild(self?.name ?? "") {
+                    guard var safeName = self?.name.replacingOccurrences(of: "", with: "_") else { return }
+                    safeName = safeName.replacingOccurrences(of: ".", with: "_")
+                    safeName = safeName.replacingOccurrences(of: "#", with: "-")
+                    safeName = safeName.replacingOccurrences(of: "$", with: "dollar")
+                    safeName = safeName.replacingOccurrences(of: "[", with: "{")
+                    safeName = safeName.replacingOccurrences(of: "]", with: "}")
+                    safeName = safeName.replacingOccurrences(of: "@", with: "dog")
+                    if snapshot.hasChild(safeName) {
 
                         Alerts().showCopyFilmAlert(controller: controller)
 

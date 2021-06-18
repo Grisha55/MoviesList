@@ -35,28 +35,26 @@ class ViewModel: NSObject {
             let moviesBase = try context.fetch(fetchRequest)
             
             if moviesBase.count == 0 {
-                DispatchQueue.global(qos: .background).async { [weak self] in
-                    for page in 1...500 {
-                        self?.networkingService.fetchData(tableView: tableView, page: page)
+                
+                for page in 1...500 {
+                    self.networkingService.fetchData(page: page, tableView: tableView) { results in
+                        ///
                     }
                 }
                 
-                self.networkingService.fetchFirstData(tableView: tableView) { [weak self] movies in
+                self.networkingService.fetchFirstData(page: 1, tableView: tableView) { [weak self] movies in
                     guard let self = self else { return }
-                    movies.forEach { movieResult in
-                        let movie = Movie(context: context)
-                        movie.setValue(movieResult.originalTitle, forKey: "title")
-                        movie.setValue(movieResult.overview, forKey: "overview")
-                        movie.setValue( self.urlForImage + movieResult.posterPath, forKey: "photo")
-                        self.movies.append(movie)
-                    }
                     DispatchQueue.main.async {
-                        tableView.reloadData()
+                        movies.forEach { movieResult in
+                            let movie = Movie(context: context)
+                            movie.setValue(movieResult.originalTitle, forKey: "title")
+                            movie.setValue(movieResult.overview, forKey: "overview")
+                            movie.setValue( self.urlForImage + movieResult.posterPath, forKey: "photo")
+                            tableView.reloadData()
+                            self.movies.append(movie)
+                        }
                     }
                 }
-                
-                Alerts().showExitAlert(title: "Please wait for about 15 sec", massage: "Movies will be here after that", titleForFirstAction: "Ok", titleForSecondAction: "Close", controller: controller)
-                
             } else {
                 if movies == moviesBase {
                     tableView.reloadData()
@@ -71,9 +69,10 @@ class ViewModel: NSObject {
                     }
                     
                     for page in 1...500 {
-                        networkingService.fetchData(tableView: tableView, page: page)
+                        self.networkingService.fetchData(page: page, tableView: tableView) { results in
+                            ///
+                        }
                     }
-                    
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         self.movies.removeAll()
