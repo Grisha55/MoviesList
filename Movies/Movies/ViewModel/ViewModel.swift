@@ -36,6 +36,7 @@ class ViewModel: NSObject {
             
             if moviesBase.count == 0 {
                 
+                
                 for page in 1...500 {
                     self.networkingService.fetchData(page: page, tableView: tableView) { results in
                         ///
@@ -44,15 +45,15 @@ class ViewModel: NSObject {
                 
                 self.networkingService.fetchData(page: 1, tableView: tableView) { [weak self] movies in
                     guard let self = self else { return }
+                    movies.forEach { movieResult in
+                        let movie = Movie(context: context)
+                        movie.title = movieResult.originalTitle
+                        movie.overview = movieResult.overview
+                        movie.photo = self.urlForImage + movieResult.posterPath
+                        self.movies.append(movie)
+                    }
                     DispatchQueue.main.async {
-                        movies.forEach { movieResult in
-                            let movie = Movie(context: context)
-                            movie.setValue(movieResult.originalTitle, forKey: "title")
-                            movie.setValue(movieResult.overview, forKey: "overview")
-                            movie.setValue( self.urlForImage + movieResult.posterPath, forKey: "photo")
-                            tableView.reloadData()
-                            self.movies.append(movie)
-                        }
+                        tableView.reloadData()
                     }
                 }
             } else {
@@ -115,6 +116,13 @@ class ViewModel: NSObject {
     
     func registerCell(tableView: UITableView) {
         tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: identifier)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView, tableView: UITableView) {
+        let position = scrollView.contentOffset.y
+        if position > tableView.contentSize.height - 100 {
+            // TODO: Сделать так, чтобы при перехода на следующую стр фильмов шла новая загрузка!!!
+        }
     }
 }
 
