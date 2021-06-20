@@ -49,10 +49,11 @@ class NetworkingService: NSObject {
                         DispatchQueue.main.async {
                         guard let self = self else { return }
                         DataStore().saveData(name: movie.originalTitle, overview: movie.overview, photoURL: self.urlForImage + movie.posterPath)
-                        completion(moviesList)
                     }
                 }
-                
+                DispatchQueue.main.async {
+                    completion(moviesList)
+                }
             } catch {
                 print(error.localizedDescription)
             }

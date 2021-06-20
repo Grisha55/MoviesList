@@ -77,6 +77,15 @@ extension FilmsVC: UITableViewDelegate {
         viewModel.selectedRowAt(indexPath)
         performSegue(withIdentifier: toDetailVC, sender: nil)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let viewModel = viewModel else { return }
+        //viewModel.scrollViewDidScroll(scrollView, tableView: tableView)
+        let position = scrollView.contentOffset.y
+        if position > tableView.contentSize.height - 100 {
+            print("fetch more")
+        }
+    }
 }
 //MARK: - UITableViewDataSource
 extension FilmsVC: UITableViewDataSource {
