@@ -25,4 +25,13 @@ class FavoriteCell: UITableViewCell {
             photoImageView.layer.borderColor = UIColor.black.cgColor
         }
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 4, right: 0))
+        self.contentView.layer.cornerRadius = 13
+
+        self.contentView.layer.borderColor = UIColor.blue.cgColor
+        self.contentView.layer.borderWidth = 3
+    }
 }
