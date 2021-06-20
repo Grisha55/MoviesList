@@ -42,7 +42,7 @@ class ViewModel: NSObject {
                     }
                 }
                 
-                self.networkingService.fetchFirstData(page: 1, tableView: tableView) { [weak self] movies in
+                self.networkingService.fetchData(page: 1, tableView: tableView) { [weak self] movies in
                     guard let self = self else { return }
                     DispatchQueue.main.async {
                         movies.forEach { movieResult in
