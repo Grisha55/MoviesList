@@ -10,7 +10,7 @@ import Foundation
 // MARK: - NetworkingMovies
 struct NetworkingMovies: Codable {
     let results: [Results]
-
+    let page: Int
 }
 
 // MARK: - Results

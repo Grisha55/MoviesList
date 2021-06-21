@@ -32,7 +32,7 @@ class FilmsVC: UIViewController {
         
         viewModel = ViewModel()
         settingsTableView()
-        viewModel?.getMoviesFromCD(tableView: tableView, controller: self)
+        viewModel?.getFirstData(tableView: tableView)
     }
     
     // Setup tableView
@@ -80,11 +80,7 @@ extension FilmsVC: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let viewModel = viewModel else { return }
-        //viewModel.scrollViewDidScroll(scrollView, tableView: tableView)
-        let position = scrollView.contentOffset.y
-        if position > tableView.contentSize.height - 100 {
-            print("fetch more")
-        }
+        viewModel.scrollViewDidScroll(scrollView, tableView: tableView)
     }
 }
 //MARK: - UITableViewDataSource

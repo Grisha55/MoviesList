@@ -21,8 +21,8 @@ class FavoriteCell: UITableViewCell {
             overviewLabel.text = viewModel.overview
             photoImageView.load(imageFrom: viewModel.photo)
             photoImageView.layer.cornerRadius = 41.5
-            photoImageView.layer.borderWidth = 5
-            photoImageView.layer.borderColor = UIColor.black.cgColor
+            photoImageView.layer.borderWidth = 2
+            photoImageView.layer.borderColor = UIColor.systemRed.cgColor
         }
     }
     
@@ -31,7 +31,7 @@ class FavoriteCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 4, right: 0))
         self.contentView.layer.cornerRadius = 13
 
-        self.contentView.layer.borderColor = UIColor.blue.cgColor
+        self.contentView.layer.borderColor = UIColor.black.cgColor
         self.contentView.layer.borderWidth = 3
     }
 }

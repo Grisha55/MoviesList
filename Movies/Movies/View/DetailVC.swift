@@ -29,7 +29,7 @@ class DetailVC: UIViewController {
         photoImageView.layer.cornerRadius = 30
         photoImageView.contentMode = .scaleToFill
         photoImageView.layer.borderWidth = 5
-        photoImageView.layer.borderColor = UIColor.black.cgColor
+        photoImageView.layer.borderColor = UIColor.white.cgColor
     }
     
     // Setup properties
