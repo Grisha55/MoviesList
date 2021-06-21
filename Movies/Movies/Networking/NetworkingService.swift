@@ -44,7 +44,6 @@ class NetworkingService: NSObject {
             do {
                 let movies = try JSONDecoder().decode(NetworkingMovies.self, from: data)
                 let moviesList = movies.results
-                
                     moviesList.forEach { [weak self] movie in
                         DispatchQueue.main.async {
                         guard let self = self else { return }

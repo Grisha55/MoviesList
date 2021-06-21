@@ -19,71 +19,28 @@ class ViewModel: NSObject {
     private var networkingService: NetworkingService!
     private var dataStore: DataStore!
     
-    var selectedIndexPath: IndexPath?
+    private var selectedIndexPath: IndexPath?
     
-    var movies = [NSManagedObject]()
+    private var movies = [NSManagedObject]()
     
-    //Get movies from CoreData
-    func getMoviesFromCD(tableView: UITableView, controller: UIViewController) {
-        
+    private var totalPage = 1
+    
+    func getFirstData(tableView: UITableView) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
-        dataStore = DataStore()
-        networkingService = NetworkingService()
-        do {
-            let moviesBase = try context.fetch(fetchRequest)
-            
-            if moviesBase.count == 0 {
-                
-                
-                for page in 1...500 {
-                    self.networkingService.fetchData(page: page, tableView: tableView) { results in
-                        ///
-                    }
-                }
-                
-                self.networkingService.fetchData(page: 1, tableView: tableView) { [weak self] movies in
-                    guard let self = self else { return }
-                    movies.forEach { movieResult in
-                        let movie = Movie(context: context)
-                        movie.title = movieResult.originalTitle
-                        movie.overview = movieResult.overview
-                        movie.photo = self.urlForImage + movieResult.posterPath
-                        self.movies.append(movie)
-                    }
-                    DispatchQueue.main.async {
-                        tableView.reloadData()
-                    }
-                }
-            } else {
-                if movies == moviesBase {
-                    tableView.reloadData()
-                } else {
-                    
-                    do {
-                        let oldValues = try context.fetch(fetchRequest)
-                        oldValues.forEach { context.delete($0) }
-                        try context.save()
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                    
-                    for page in 1...500 {
-                        self.networkingService.fetchData(page: page, tableView: tableView) { results in
-                            ///
-                        }
-                    }
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self else { return }
-                        self.movies.removeAll()
-                        self.movies = self.dataStore.fetchMovies()
-                        tableView.reloadData()
-                    }
-                }
+        
+        NetworkingService().fetchData(page: 1, tableView: tableView) { [weak self] movies in
+            guard let self = self else { return }
+            movies.forEach { movieResult in
+                let movie = Movie(context: context)
+                movie.title = movieResult.originalTitle
+                movie.overview = movieResult.overview
+                movie.photo = self.urlForImage + movieResult.posterPath
+                self.movies.append(movie)
             }
-        } catch {
-            print(error.localizedDescription)
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
         }
     }
     
@@ -119,9 +76,34 @@ class ViewModel: NSObject {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView, tableView: UITableView) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
+        guard let _ = try? context.fetch(fetchRequest) else { return }
+        
         let position = scrollView.contentOffset.y
-        if position > tableView.contentSize.height - 100 {
-            // TODO: Сделать так, чтобы при перехода на следующую стр фильмов шла новая загрузка!!!
+        if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            totalPage += 1
+            
+            if totalPage < 1000 {
+                print("This is page number: \(totalPage)")
+                    NetworkingService().fetchData(page: self.totalPage, tableView: tableView) { movies in
+                        
+                        movies.forEach { movieResult in
+                            let movie = Movie(context: context)
+                            movie.title = movieResult.originalTitle
+                            movie.overview = movieResult.overview
+                            movie.photo = self.urlForImage + movieResult.posterPath
+                            self.movies.append(movie)
+                        }
+                    }
+                //DispatchQueue.main.async {
+                    tableView.reloadData()
+                //}
+            } else {
+                return
+            }
         }
     }
 }
