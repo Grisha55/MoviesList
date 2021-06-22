@@ -23,21 +23,34 @@ class ViewModel: NSObject {
     
     private var movies = [NSManagedObject]()
     
-    private var totalPage = 1
+    static var totalPage = 1
     
     func getFirstData(tableView: UITableView) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
         
-        NetworkingService().fetchData(page: 1, tableView: tableView) { [weak self] movies in
-            guard let self = self else { return }
-            movies.forEach { movieResult in
-                let movie = Movie(context: context)
-                movie.title = movieResult.originalTitle
-                movie.overview = movieResult.overview
-                movie.photo = self.urlForImage + movieResult.posterPath
-                self.movies.append(movie)
+        if ViewModel.totalPage == 1 {
+            
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
+            guard let _ = try? context.fetch(fetchRequest) else { return }
+            
+            NetworkingService().fetchData(page: 1, tableView: tableView) { [weak self] movies in
+                guard let self = self else { return }
+                movies.forEach { movieResult in
+                    let movie = Movie(context: context)
+                    movie.title = movieResult.originalTitle
+                    movie.overview = movieResult.overview
+                    movie.photo = self.urlForImage + movieResult.posterPath
+                    self.movies.append(movie)
+                }
+                ViewModel.totalPage += 1
+                DispatchQueue.main.async {
+                    tableView.reloadData()
+                }
             }
+        } else {
+            self.movies = DataStore().fetchMovies()
+            ViewModel.totalPage = movies.count / 20
             DispatchQueue.main.async {
                 tableView.reloadData()
             }
@@ -84,11 +97,11 @@ class ViewModel: NSObject {
         
         let position = scrollView.contentOffset.y
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
-            totalPage += 1
+            ViewModel.totalPage += 1
             
-            if totalPage < 1000 {
-                print("This is page number: \(totalPage)")
-                    NetworkingService().fetchData(page: self.totalPage, tableView: tableView) { movies in
+            if ViewModel.totalPage < 1000 {
+                print("This is page number: \(ViewModel.totalPage)")
+                    NetworkingService().fetchData(page: ViewModel.totalPage, tableView: tableView) { movies in
                         
                         movies.forEach { movieResult in
                             let movie = Movie(context: context)
