@@ -76,8 +76,9 @@ class ViewModel: NSObject {
         return 150.0
     }
     
-    func viewModelForSelectedRow() -> DetailViewModel? {
+    func viewModelForSelectedRow(tableView: UITableView) -> DetailViewModel? {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
+        tableView.deselectRow(at: selectedIndexPath, animated: false)
         let movie = movies[selectedIndexPath.row]
         return DetailViewModel(name: movie.value(forKey: "title") as! String, overview: movie.value(forKey: "overview") as! String, photo: movie.value(forKey: "photo") as! String)
     }

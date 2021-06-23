@@ -25,15 +25,15 @@ class MovieCell: UITableViewCell {
             photoImageView.load(imageFrom: viewModel.photoString)
             photoImageView.layer.cornerRadius = 20
             photoImageView.layer.borderWidth = 2
-            photoImageView.layer.borderColor = UIColor.white.cgColor
+            photoImageView.layer.borderColor = UIColor.black.cgColor
         }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0))
-        self.contentView.layer.cornerRadius = 20
-        self.contentView.layer.borderColor = UIColor.systemRed.cgColor
+        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
+        self.contentView.layer.cornerRadius = 40
+        self.contentView.layer.borderColor = UIColor.white.cgColor
         self.contentView.layer.borderWidth = 2
     }
 }

@@ -41,7 +41,7 @@ class SearchVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "toDescriptionFromSearch" else { return }
         guard let detailVC = segue.destination as? DetailVC else { return }
-        detailVC.detailViewModel = searchViewModel?.viewModelForSelectedRow()
+        detailVC.detailViewModel = searchViewModel?.viewModelForSelectedRow(tableView: tableView)
     }
 
 }
@@ -69,7 +69,7 @@ extension SearchVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? FavoriteCell else { return UITableViewCell() }
-        
+        cell.backgroundColor = .black
         guard let searchViewModel = searchViewModel else { return UITableViewCell() }
         
         let cellViewModel = searchViewModel.cellForRowAt(indexPath: indexPath)
