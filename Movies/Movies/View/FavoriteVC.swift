@@ -43,6 +43,10 @@ extension FavoriteVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         favoriteViewModel?.commitEditingStyle(style: .delete, indexPath: indexPath, tableView: tableView)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -56,7 +60,7 @@ extension FavoriteVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? FavoriteCell else { return UITableViewCell() }
-        
+        cell.backgroundColor = .init(red: 42, green: 53, blue: 76, alpha: 0)
         guard let viewModel = favoriteViewModel else { return UITableViewCell() }
         
         let cellViewModel = viewModel.cellForRowAt(indexPath)

@@ -28,10 +28,9 @@ class FavoriteCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 4, right: 0))
-        self.contentView.layer.cornerRadius = 13
-
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
+        self.contentView.layer.cornerRadius = 40
         self.contentView.layer.borderColor = UIColor.black.cgColor
-        self.contentView.layer.borderWidth = 3
+        self.contentView.layer.borderWidth = 2
     }
 }

@@ -94,7 +94,7 @@ extension FilmsVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? MovieCell else { return UITableViewCell() }
-        
+        cell.backgroundColor = .black
         guard let viewModel = viewModel else { return UITableViewCell() }
         
         let cellViewModel = viewModel.cellForRowAt(indexPath: indexPath)
