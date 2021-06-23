@@ -30,8 +30,9 @@ class SearchViewModel {
         return 110.0
     }
     
-    func viewModelForSelectedRow() -> DetailViewModel? {
+    func viewModelForSelectedRow(tableView: UITableView) -> DetailViewModel? {
         guard let selectedIndexPath = selectedIndexPath else { return nil }
+        tableView.deselectRow(at: selectedIndexPath, animated: false)
         let movie = filteredMovies[selectedIndexPath.row]
         return DetailViewModel(name: movie.title, overview: movie.overview, photo: urlForImage + movie.posterPath)
     }

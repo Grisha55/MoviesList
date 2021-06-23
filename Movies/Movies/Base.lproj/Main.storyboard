@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zHL-cX-d2J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BHd-mb-6kD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -258,10 +258,41 @@
             </objects>
             <point key="canvasLocation" x="138" y="-425"/>
         </scene>
+        <!--LoadingVC-->
+        <scene sceneID="nPP-1n-uIO">
+            <objects>
+                <viewController id="BHd-mb-6kD" customClass="LoadingVC" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ELr-5J-7Gv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="GPy-sr-tBC">
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="gxe-DO-BNm"/>
+                                    <constraint firstAttribute="width" constant="200" id="xkx-WN-WhJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JMX-uk-zB8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GPy-sr-tBC" firstAttribute="centerY" secondItem="ELr-5J-7Gv" secondAttribute="centerY" id="zAH-W8-HXd"/>
+                            <constraint firstItem="GPy-sr-tBC" firstAttribute="centerX" secondItem="ELr-5J-7Gv" secondAttribute="centerX" id="zAh-Zs-gAO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logoImageView" destination="GPy-sr-tBC" id="ZpP-rT-4vB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iqj-7C-X6m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1568.1159420289857" y="424.55357142857139"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qYK-DQ-HGQ">
             <objects>
-                <tabBarController id="zHL-cX-d2J" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarVC" id="zHL-cX-d2J" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uAZ-rF-Hfs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -355,10 +386,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bbu-jh-sO6"/>
+        <segue reference="CuE-US-ONn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="film.fill" catalog="system" width="128" height="93"/>
+        <image name="logo" width="320" height="320"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="sparkles" catalog="system" width="112" height="128"/>
         <systemColor name="systemBackgroundColor">
