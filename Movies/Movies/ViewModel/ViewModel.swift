@@ -91,6 +91,17 @@ class ViewModel: NSObject {
         tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: identifier)
     }
     
+    func tableViewWillDisplay(_ tableView: UITableView, cell: UITableViewCell, indexPath: IndexPath) {
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
+        cell.layer.transform = rotationTransform
+        cell.alpha = 0.5
+        
+        UIView.animate(withDuration: 1.0) {
+            cell.layer.transform = CATransform3DIdentity
+            cell.alpha = 1.0
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView, tableView: UITableView) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
