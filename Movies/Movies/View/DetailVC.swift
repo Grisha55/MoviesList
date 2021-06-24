@@ -29,7 +29,7 @@ class DetailVC: UIViewController {
         photoImageView.layer.cornerRadius = 30
         photoImageView.contentMode = .scaleToFill
         photoImageView.layer.borderWidth = 5
-        photoImageView.layer.borderColor = UIColor.white.cgColor
+        photoImageView.layer.borderColor = UIColor.black.cgColor
     }
     
     // Setup properties
@@ -46,5 +46,9 @@ class DetailVC: UIViewController {
     @IBAction func buttonSaveAction(_ sender: Any) {
         
         detailViewModel?.saveToUserToFB(controller: self)
+    }
+    
+    @IBAction func buttonCancelAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
 }
