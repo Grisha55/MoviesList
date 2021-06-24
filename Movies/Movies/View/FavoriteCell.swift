@@ -22,7 +22,7 @@ class FavoriteCell: UITableViewCell {
             photoImageView.load(imageFrom: viewModel.photo)
             photoImageView.layer.cornerRadius = 41.5
             photoImageView.layer.borderWidth = 2
-            photoImageView.layer.borderColor = UIColor.systemRed.cgColor
+            photoImageView.layer.borderColor = UIColor.black.cgColor
         }
     }
     
