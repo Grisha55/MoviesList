@@ -42,7 +42,7 @@ class Alerts {
     }
     
     func showCopyFilmAlert(controller: UIViewController) {
-        let alertVC = UIAlertController(title: "You have already choosed id", message: "You can find it in you favourites films", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "You have already choosed it", message: "You can find it in your favourite films", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         
         alertVC.addAction(alertAction)
