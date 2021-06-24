@@ -72,7 +72,7 @@ extension RegistrationVC: UITextFieldDelegate {
             
             guard !name.isEmpty, !password.isEmpty, !email.isEmpty else {
                 
-                Alerts().showRegistrationAlert(controller: self, message: "You shoul enter all the fields")
+                Alerts().showRegistrationAlert(controller: self, message: "You should enter all the fields")
                 
                 return false
             }
