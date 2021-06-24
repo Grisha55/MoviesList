@@ -82,6 +82,11 @@ extension FilmsVC: UITableViewDelegate {
         guard let viewModel = viewModel else { return }
         viewModel.scrollViewDidScroll(scrollView, tableView: tableView)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else { return }
+        viewModel.tableViewWillDisplay(tableView, cell: cell, indexPath: indexPath)
+    }
 }
 //MARK: - UITableViewDataSource
 extension FilmsVC: UITableViewDataSource {

@@ -58,6 +58,10 @@ extension SearchVC: UITableViewDelegate {
         searchViewModel?.selectedRowAt(indexPath)
         performSegue(withIdentifier: "toDescriptionFromSearch", sender: self)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        searchViewModel?.tableViewWillDisplay(tableView, cell: cell, indexPath: indexPath)
+    }
 }
 
 //MARK: - UITableViewDataSource
