@@ -33,7 +33,7 @@ class ViewModel: NSObject {
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
             guard let _ = try? context.fetch(fetchRequest) else { return }
-            DispatchQueue.main.async {
+            DispatchQueue.global(qos: .userInteractive).async {
                 NetworkingService().fetchData(page: 1, tableView: tableView) { [weak self] movies in
                     guard let self = self else { return }
                     movies.forEach { movieResult in
@@ -44,18 +44,16 @@ class ViewModel: NSObject {
                         self.movies.append(movie)
                     }
                     ViewModel.totalPage += 1
-                    //DispatchQueue.main.async {
-                    tableView.reloadData()
-                    //}
+                    DispatchQueue.main.async {
+                        tableView.reloadData()
+                    }
                 }
             }
             
         } else {
             self.movies = DataStore().fetchMovies()
             ViewModel.totalPage = movies.count / 20
-            //DispatchQueue.main.async {
-                tableView.reloadData()
-            //}
+            tableView.reloadData()
         }
     }
     
@@ -96,7 +94,7 @@ class ViewModel: NSObject {
         cell.layer.transform = rotationTransform
         cell.alpha = 0.5
         
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: 0.5) {
             cell.layer.transform = CATransform3DIdentity
             cell.alpha = 1.0
         }
@@ -115,6 +113,7 @@ class ViewModel: NSObject {
             
             if ViewModel.totalPage < 1000 {
                 print("This is page number: \(ViewModel.totalPage)")
+                DispatchQueue.global(qos: .background).async {
                     NetworkingService().fetchData(page: ViewModel.totalPage, tableView: tableView) { movies in
                         
                         movies.forEach { movieResult in
@@ -125,9 +124,11 @@ class ViewModel: NSObject {
                             self.movies.append(movie)
                         }
                     }
-                //DispatchQueue.main.async {
-                    tableView.reloadData()
-                //}
+                    DispatchQueue.main.async {
+                        tableView.reloadData()
+                    }
+                }
+                
             } else {
                 return
             }
