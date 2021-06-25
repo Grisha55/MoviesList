@@ -12,7 +12,7 @@ import Firebase
 class DetailViewModel {
     
     //MARK: - Constants
-    let urlForImage = "https://image.tmdb.org/t/p/w300"
+    private let urlForImage = "https://image.tmdb.org/t/p/w300"
     
     //MARK: - Properties
     private var nameString: String

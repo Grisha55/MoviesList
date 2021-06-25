@@ -11,9 +11,9 @@ import CoreData
 class SearchViewModel {
     
     //MARK: - Properties
-    let urlForImage = "https://image.tmdb.org/t/p/w300"
-    var filteredMovies = [Results]()
-    var selectedIndexPath: IndexPath?
+    private let urlForImage = "https://image.tmdb.org/t/p/w300"
+    private var filteredMovies = [Results]()
+    private var selectedIndexPath: IndexPath?
     
     //MARK: - UITableViewDataSource
     func cellForRowAt(indexPath: IndexPath) -> FavoriteCellViewModel? {

@@ -12,8 +12,8 @@ import Firebase
 class FavoriteViewModel {
     
     //MARK: - Constants
-    let identifier = "favoriteCell"
-    let urlForImage = "https://image.tmdb.org/t/p/w300"
+    private let identifier = "favoriteCell"
+    private let urlForImage = "https://image.tmdb.org/t/p/w300"
     
     //MARK: - Properties
     private var movies = [MovieDatabase]()

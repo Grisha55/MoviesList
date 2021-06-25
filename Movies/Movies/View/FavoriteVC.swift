@@ -11,11 +11,11 @@ import Firebase
 class FavoriteVC: UIViewController {
     
     //MARK: - Constants
-    let identifier = "favoriteCell"
+    private let identifier = "favoriteCell"
     
     @IBOutlet weak var tableView: UITableView!
     
-    var favoriteViewModel: FavoriteViewModel?
+    private var favoriteViewModel: FavoriteViewModel?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

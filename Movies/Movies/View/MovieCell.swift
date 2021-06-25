@@ -10,7 +10,7 @@ import Firebase
 
 class MovieCell: UITableViewCell {
     
-    let urlForImage = "https://image.tmdb.org/t/p/w300"
+    private let urlForImage = "https://image.tmdb.org/t/p/w300"
     
     //MARK: - Properties
     @IBOutlet weak var titleLabel: UILabel!
