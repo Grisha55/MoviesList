@@ -60,8 +60,7 @@ class DetailViewModel {
                     safeName = safeName.replacingOccurrences(of: "@", with: "dog")
                     if snapshot.hasChild(safeName) {
 
-                        Alerts().showCopyFilmAlert(controller: controller)
-
+                        Alerts().showWarningAlert(controller: controller, title: "You have already choosed it", message: "You can find it in your favourite films", actionTitle: "Ok")
                         }else{
                             DispatchQueue.global(qos: .background).async {
                                 FirebaseStore().loadDataToFirestore(name: self?.nameString ?? "N/A", overview: self?.overview ?? "N/A", photoImageViewImage: self?.imageViewImage ?? "")

@@ -18,7 +18,7 @@ class FirebaseStore {
                     print(error?.localizedDescription as Any)
                 }
                 if providers != nil {
-                    Alerts().showRegistrationAlert(controller: controller, message: "This email have already veryfide")
+                    Alerts().showWarningAlert(controller: controller, title: "", message: "This email have already veryfide", actionTitle: "Cancel")
                 }
             }
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
@@ -35,7 +35,7 @@ class FirebaseStore {
     func signInWith(email: String, password: String, controller: UIViewController, message: String) {
         Firebase.Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             guard authResult != nil, error == nil else {
-                Alerts().showRegistrationAlert(controller: controller, message: message)
+                Alerts().showWarningAlert(controller: controller, title: "", message: message, actionTitle: "Cancel")
                 return
             }
             controller.dismiss(animated: true, completion: nil)

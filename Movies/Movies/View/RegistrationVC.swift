@@ -71,8 +71,7 @@ extension RegistrationVC: UITextFieldDelegate {
         if signup {
             
             guard !name.isEmpty, !password.isEmpty, !email.isEmpty else {
-                
-                Alerts().showRegistrationAlert(controller: self, message: "You should enter all the fields")
+                Alerts().showWarningAlert(controller: self, title: "", message: "You should enter all the fields", actionTitle: "Cancel")
                 
                 return false
             }
