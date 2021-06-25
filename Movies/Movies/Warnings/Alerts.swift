@@ -21,9 +21,9 @@ class Alerts {
         controller.present(alertVC, animated: true, completion: nil)
     }
     
-    func showRegistrationAlert(controller: UIViewController, message: String) {
-        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    func showWarningAlert(controller: UIViewController, title: String, message: String, actionTitle: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: actionTitle, style: .default, handler: nil)
         alertVC.addAction(alertAction)
         controller.present(alertVC, animated: true, completion: nil)
     }
@@ -38,14 +38,6 @@ class Alerts {
         alertVC.addAction(firstAction)
         alertVC.addAction(secondAction)
         
-        controller.present(alertVC, animated: true, completion: nil)
-    }
-    
-    func showCopyFilmAlert(controller: UIViewController) {
-        let alertVC = UIAlertController(title: "You have already choosed it", message: "You can find it in your favourite films", preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        
-        alertVC.addAction(alertAction)
         controller.present(alertVC, animated: true, completion: nil)
     }
 }
