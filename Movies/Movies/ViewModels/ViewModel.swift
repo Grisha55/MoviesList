@@ -33,7 +33,7 @@ class ViewModel: NSObject {
             let context = appDelegate.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Movie")
             guard let _ = try? context.fetch(fetchRequest) else { return }
-            DispatchQueue.global(qos: .userInteractive).async {
+            DispatchQueue.global(qos: .background).async {
                 NetworkingService().fetchData(page: 1, tableView: tableView) { [weak self] movies in
                     guard let self = self else { return }
                     movies.forEach { movieResult in
