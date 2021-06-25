@@ -16,37 +16,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="379" height="103"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIU-nw-gra">
+                        <rect key="frame" x="101" y="10" width="268" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.84698432680000002" green="0.84710663559999999" blue="0.84695750469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cGV-dJ-8Nu">
                         <rect key="frame" x="10" y="10" width="83" height="83"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="cGV-dJ-8Nu" secondAttribute="height" multiplier="1:1" id="ykS-JJ-baL"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQL-Xv-aiM">
-                        <rect key="frame" x="103" y="10" width="266" height="93"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIU-nw-gra">
-                                <rect key="frame" x="0.0" y="0.0" width="35.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.84698432680000002" green="0.84710663559999999" blue="0.84695750469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-oF-CU7">
-                                <rect key="frame" x="0.0" y="14" width="26.5" height="79"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.84698432680000002" green="0.84710663559999999" blue="0.84695750469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-oF-CU7">
+                        <rect key="frame" x="101" y="35" width="268" height="68"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.84698432680000002" green="0.84710663559999999" blue="0.84695750469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="0.031361360099999999" green="0.050991125399999997" blue="0.1686013341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="wQL-Xv-aiM" firstAttribute="leading" secondItem="cGV-dJ-8Nu" secondAttribute="trailing" constant="10" id="B23-SK-JAu"/>
-                    <constraint firstAttribute="trailing" secondItem="wQL-Xv-aiM" secondAttribute="trailing" constant="10" id="SwZ-Ub-pmI"/>
-                    <constraint firstItem="wQL-Xv-aiM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jQf-Oa-nvc"/>
+                    <constraint firstAttribute="trailing" secondItem="Eh4-oF-CU7" secondAttribute="trailing" constant="10" id="I9g-z9-GM1"/>
+                    <constraint firstItem="OIU-nw-gra" firstAttribute="leading" secondItem="cGV-dJ-8Nu" secondAttribute="trailing" constant="8" symbolic="YES" id="SgI-Du-oXM"/>
+                    <constraint firstAttribute="trailing" secondItem="OIU-nw-gra" secondAttribute="trailing" constant="10" id="X54-yF-jHR"/>
+                    <constraint firstItem="Eh4-oF-CU7" firstAttribute="leading" secondItem="cGV-dJ-8Nu" secondAttribute="trailing" constant="8" symbolic="YES" id="coX-TC-Vcg"/>
+                    <constraint firstAttribute="bottom" secondItem="Eh4-oF-CU7" secondAttribute="bottom" id="iB6-TL-6ya"/>
                     <constraint firstAttribute="bottom" secondItem="cGV-dJ-8Nu" secondAttribute="bottom" constant="10" id="kot-BL-EmZ"/>
-                    <constraint firstAttribute="bottom" secondItem="wQL-Xv-aiM" secondAttribute="bottom" id="mu6-SH-Ux2"/>
+                    <constraint firstItem="Eh4-oF-CU7" firstAttribute="top" secondItem="OIU-nw-gra" secondAttribute="bottom" constant="8" symbolic="YES" id="pCe-pP-hL6"/>
+                    <constraint firstItem="OIU-nw-gra" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qek-TL-2lM"/>
                     <constraint firstItem="cGV-dJ-8Nu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="tQ7-x0-T7N"/>
                     <constraint firstItem="cGV-dJ-8Nu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="w3z-Tg-bAD"/>
                 </constraints>

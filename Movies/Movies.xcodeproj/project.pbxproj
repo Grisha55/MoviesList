@@ -165,7 +165,7 @@
 				BE0B3AAB2672345900B2A143 /* Transitions */,
 				BEBFBD56266FE205009097F1 /* Warnings */,
 				BE80A6E5266802C800BE609D /* View */,
-				BE80A6DE2667E85600BE609D /* ViewModel */,
+				BE80A6DE2667E85600BE609D /* ViewModels */,
 				BE80A6D82667D3B800BE609D /* Networking */,
 				BEBFBD55266FE170009097F1 /* DatabaseManager */,
 				BEBFBD52266FA547009097F1 /* DataStore */,
@@ -208,7 +208,7 @@
 			path = NetworkingModel;
 			sourceTree = "<group>";
 		};
-		BE80A6DE2667E85600BE609D /* ViewModel */ = {
+		BE80A6DE2667E85600BE609D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				BE80A6DF2667E87900BE609D /* ViewModel.swift */,
@@ -219,7 +219,7 @@
 				BEBD93C12676227D0010B5F8 /* SearchViewModel.swift */,
 				BE3D3BDA26832C2900AE87F6 /* LoadingViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		BE80A6E5266802C800BE609D /* View */ = {
