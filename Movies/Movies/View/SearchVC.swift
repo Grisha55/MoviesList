@@ -35,7 +35,7 @@ class SearchVC: UIViewController {
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        searchController.searchBar.backgroundColor = UIColor.init(red: 165, green: 42, blue: 42, alpha: 0.0)
+        searchController.searchBar.backgroundColor = UIColor.init(red: 165/255, green: 42/255, blue: 42/255, alpha: 0.0)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
