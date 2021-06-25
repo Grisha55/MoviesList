@@ -16,8 +16,8 @@ class FilmsVC: UIViewController {
     private var networkingService: NetworkingService?
     
     //MARK: - Constants
-    let toDetailVC = "toDetailVC"
-    let identifier = "movieCell"
+    private let toDetailVC = "toDetailVC"
+    private let identifier = "movieCell"
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonExit: UIBarButtonItem!

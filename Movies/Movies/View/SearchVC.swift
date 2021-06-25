@@ -11,8 +11,8 @@ class SearchVC: UIViewController {
 
     //MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
-    var searchViewModel: SearchViewModel?
-    let searchController = UISearchController(searchResultsController: nil)
+    private var searchViewModel: SearchViewModel?
+    private let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +56,7 @@ extension SearchVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         searchViewModel?.selectedRowAt(indexPath)
+        tableView.deselectRow(at: indexPath, animated: false)
         performSegue(withIdentifier: "toDescriptionFromSearch", sender: self)
     }
     

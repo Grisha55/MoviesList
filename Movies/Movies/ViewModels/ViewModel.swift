@@ -12,8 +12,8 @@ import CoreData
 class ViewModel: NSObject {
     
     //MARK: - Constants
-    let urlForImage = "https://image.tmdb.org/t/p/w300"
-    let identifier = "movieCell"
+    private let urlForImage = "https://image.tmdb.org/t/p/w300"
+    private let identifier = "movieCell"
     
     //MARK: - Properties
     private var networkingService: NetworkingService!

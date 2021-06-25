@@ -10,7 +10,7 @@ import CoreData
 
 class NetworkingService: NSObject {
     
-    let urlForImage = "https://image.tmdb.org/t/p/w300"
+    private let urlForImage = "https://image.tmdb.org/t/p/w300"
     
     func fetchData(page: Int, tableView: UITableView, completion: @escaping ([Results]) -> Void) {
         
